@@ -1,0 +1,39 @@
+{
+  "extends": ["prettier", "airbnb"],
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "rules": {
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "no-console": "off",
+    "no-mixed-operators": ["error", { "allowSamePrecedence": true }],
+    "no-trailing-spaces": ["warn", { "skipBlankLines": true }],
+    "lines-between-class-members": ["error", "always"],
+    "prefer-destructuring": "warn",
+    "react/jsx-one-expression-per-line": "off",
+    "no-param-reassign": "off",
+    "import/extensions": ["off", "never"],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+    "Cypress": true,
+    "cy": true,
+    "expect": true,
+    "jest": true
+  }
+}

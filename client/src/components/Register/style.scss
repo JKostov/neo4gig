@@ -1,0 +1,16 @@
+.form {
+  min-height: 220px;
+  margin: auto;
+  padding: 20px 35px;
+
+  .errorMessage {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .label {
+    background-color: transparent !important;
+    padding-left: 0 !important;
+  }
+}
+

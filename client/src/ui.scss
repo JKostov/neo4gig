@@ -1,0 +1,23 @@
+$background-color: #fefefe;
+
+$main-color: #2185d0;
+$main-danger: #d73a49;
+
+$box-border-color: #f1f1f1;
+$box-bg: white;
+$box-shadow: #d8dbe3;
+
+$inactive-text-color: #959595;
+$active-text-color: rgba(0, 0, 0, 0.87);
+
+$inactive-tab-button: $box-border-color;
+$tab-buttons-border: $box-border-color;
+
+$paragraph-color: #676767;
+
+@mixin segmentWrapper {
+  box-shadow: none !important;
+  border: 2px solid $box-border-color !important;
+  border-radius: 3px !important;
+  padding: 2em !important;
+}

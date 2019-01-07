@@ -1,0 +1,8 @@
+{
+  "modules": true,
+  "plugins": {
+  "postcss-modules": {
+      "generateScopedName": "_[path]_[name]__[local]"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "name": "react-webpack-boilerplate",
+  "version": "0.0.1",
+  "description": "React boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack/webpack.dev.config.js",
+    "start:dev": "export $(cat .env.development | xargs) && npm run start",
+    "build": "export $(cat .env | xargs) && webpack -p --config webpack/webpack.prod.config.js",
+    "test": "node_modules/.bin/jest --projects=tests",
+    "storybook": "node_modules/.bin/start-storybook -p 9001 -c .storybook"
+  },
+  "jest": {
+    "projects": [
+      {
+        "displayName": "test"
+      },
+      {
+        "displayName": "lint",
+        "runner": "jest-runner-eslint",
+        "testMatch": [
+          "<rootDir>/src/**/*.{js,jsx}"
+        ]
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strahinja16/react-webpack-boilerplate.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "history": "^4.7.2",
+    "immutable": "^3.8.2",
+    "joi": "^13.5.2",
+    "joi-browser": "^13.4.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.4.1",
+    "react-dropzone": "^5.1.0",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0",
+    "redux-persist": "^5.10.0",
+    "redux-persist-transform-immutable": "^5.0.0",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-react": "^0.82.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/react": "^4.0.0-alpha.23",
+    "autoprefixer": "^8.6.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
+    "browser-sync": "^2.24.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "css-loader": "^1.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-bof-newline": "^1.0.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
+    "jest": "^23.3.0",
+    "jest-runner-eslint": "^0.6.0",
+    "lint-staged": "^7.2.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.2",
+    "postcss-modules": "^1.1.0",
+    "prettier": "^1.13.7",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack-dev-server": "^3.1.8"
+  }
+}
