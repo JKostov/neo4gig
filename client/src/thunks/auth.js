@@ -11,8 +11,7 @@ export function logout() {
 
 export function login(email, password) {
   return dispatch => loginApi(email, password)
-    .then((response) => {
-      const { data } = response.data;
+    .then(({ data }) => {
       const { token } = data;
       delete data.token;
       return {

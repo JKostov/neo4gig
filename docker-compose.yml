@@ -19,6 +19,15 @@ services:
     - "7474:7474"
     - "7687:7687"
 
+  postgres:
+    image: postgres
+    ports:
+    - "5000:5432"
+    environment:
+    - POSTGRES_USER=root
+    - POSTGRES_PASSWORD=root
+    - POSTGRES_DB=neo4gig
+
   client:
     build:
       context: ./client

@@ -1,0 +1,12 @@
+{
+  "type": "postgres",
+  "host": "postgres",
+  "username": "root",
+  "password": "root",
+  "database": "neo4gig",
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "migrations": ["src/db/postgresql/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "src/db/postgresql/migrations"
+  }
+}
