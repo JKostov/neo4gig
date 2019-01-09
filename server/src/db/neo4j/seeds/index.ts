@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 import { NestFactory } from '@nestjs/core';
-import {AppModule} from '../../app.module';
+import {AppModule} from '../../../app.module';
 import { usersQuery } from './users-genres-events';
 
 async function bootstrap() {
