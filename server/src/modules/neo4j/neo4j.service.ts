@@ -17,7 +17,16 @@ export class Neo4jService {
     async batchQuery(queries: string[]) {
         const session = this.neo4j.session();
 
-        queries.forEach( async (query) => await session.run(query));
+        const transaction = session.beginTransaction();
+
+        queries.forEach((query) => transaction.run(query));
+
+        try {
+            transaction.commit();
+        }catch(e) {
+            console.log(e.toString());
+            transaction.rollback();
+        }
 
         await session.close();
     }

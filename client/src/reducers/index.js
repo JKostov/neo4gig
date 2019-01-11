@@ -5,6 +5,8 @@ import immutableTransform from 'redux-persist-transform-immutable';
 import storage from 'redux-persist/lib/storage';
 import auth from './auth';
 import breadcrumb from './breadcrumb';
+import mostAnticipated from './mostAnticipated';
+import genre from './genre';
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +18,8 @@ const persistConfig = {
 const combinedReducers = combineReducers({
   auth,
   breadcrumb,
+  mostAnticipated,
+  genre,
 });
 
 export default persistReducer(persistConfig, combinedReducers);
