@@ -5,7 +5,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 import Loadable from 'react-loadable';
 import AppLayout from '../components/AppLayout';
-import MostAnticipated from '../pages/MostAnticipated';
+import MostAnticipated from '../pages/AnticipatedEvents';
 import Genres from '../pages/Genres';
 import Feed from '../pages/Feed';
 
