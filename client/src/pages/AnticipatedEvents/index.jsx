@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAnticipatedEvents } from '../../thunks/anticipatedEvents';
-import Event from '../../components/Event';
-import style from './style.scss';
+import EventList from '../../components/EventList';
 
 class AnticipatedEvents extends Component {
   componentDidMount() {
@@ -21,11 +20,7 @@ class AnticipatedEvents extends Component {
     if (!anticipatedEvents.length) {
       return null;
     }
-    return (
-      <div className={style.grid}>
-        {anticipatedEvents.map(event => <Event key={event.id} event={event} />)}
-      </div>
-    );
+    return <EventList events={anticipatedEvents} />;
   }
 }
 
@@ -41,8 +36,8 @@ AnticipatedEvents.propTypes = {
 const mapStateToProps = ({ anticipatedEvents }) => (
   {
     anticipatedEvents: anticipatedEvents.get('anticipatedEvents'),
-  });
-
+  }
+);
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {

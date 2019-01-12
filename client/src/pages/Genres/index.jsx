@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getGenres } from '../../thunks/genre';
-import Genre from '../../components/Genre';
-import style from './style.scss';
+import GenreList from '../../components/GenreList';
 
 class Genres extends Component {
   componentDidMount() {
@@ -22,11 +21,7 @@ class Genres extends Component {
       return null;
     }
 
-    return (
-      <div className={style.grid}>
-        {genres.map(genre => <Genre key={genre.id} genre={genre} />)}
-      </div>
-    );
+    return <GenreList genres={genres} />;
   }
 }
 
