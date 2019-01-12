@@ -18,6 +18,6 @@ import { Neo4jModule } from '../neo4j/neo4j.module';
         UsersService,
         UsersNeoService,
     ],
-    exports: [UsersService],
+    exports: [UsersService, UsersNeoService],
 })
 export class UsersModule {}

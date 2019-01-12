@@ -34,7 +34,11 @@ export class EventSeed  {
         cities.forEach(city => {
             insertData.push({
                 city,
-                dateAndTime: moment(faker.date.future()).format('YYYY-MM-DD HH:mm'),
+                dateAndTime: moment(faker.date.future()).format(),
+            });
+            insertData.push({
+                city,
+                dateAndTime: moment(faker.date.future()).format(),
             });
         });
 

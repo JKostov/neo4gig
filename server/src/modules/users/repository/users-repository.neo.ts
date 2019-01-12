@@ -3,10 +3,8 @@ import { User } from '../entity/user.neo.entity';
 import { Neo4jService } from '../../neo4j/neo4j.service';
 
 class UsersNeoRepository extends AbstractNeoRepository {
-    private static readonly entityName = 'User';
-
     constructor(neo4jService: Neo4jService) {
-        super(UsersNeoRepository.entityName, User, neo4jService);
+        super(User, neo4jService);
     }
 }
 

@@ -41,7 +41,7 @@ export class UserSeed  {
                 name: user.name,
                 email: user.email,
                 isMusician: isMusician,
-                instrument: isMusician && faker.random.arrayElement(instruments),
+                instrument: isMusician ? faker.random.arrayElement(instruments) : null,
                 city: faker.random.arrayElement(cities),
             });
         });

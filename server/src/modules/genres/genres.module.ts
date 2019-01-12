@@ -13,5 +13,6 @@ import { Neo4jModule } from '../neo4j/neo4j.module';
         GenresNeoRepositoryProvider,
         GenresNeoService,
     ],
+    exports: [GenresNeoService],
 })
-export class UsersModule {}
+export class GenresModule {}

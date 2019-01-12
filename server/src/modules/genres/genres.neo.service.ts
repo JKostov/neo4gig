@@ -1,8 +1,11 @@
-
-import {Injectable, HttpException, HttpStatus, Inject} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateGenreNeoDto } from './dto/createGenre.neo.dto';
 import { Genre } from './entity/genre.neo.entity';
 import { IGenresNeoService } from './interfaces/genres-service.neo.interface';
+import { Event } from '../events/entity/event.neo.entity';
+import { User } from '../users/entity/user.neo.entity';
+import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
+import * as moment from 'moment';
 
 @Injectable()
 export class GenresNeoService implements IGenresNeoService {
@@ -33,5 +36,27 @@ export class GenresNeoService implements IGenresNeoService {
     async update(id: string, newValue: CreateGenreNeoDto): Promise<Genre | null> {
 
         return await this.genresNeoRepository.update({ ...newValue, id });
+    }
+
+    async findGenreWithUpcomingEvents(genre: Genre): Promise<Genre> {
+        const { id } = genre;
+        return await this.genresNeoRepository.getRelationshipWithQuery(
+            id,
+            Event.entityName, RelationshipSide.ToMe,
+            { dateAndTime: `> ${moment().format()}` },
+        );
+    }
+
+    async findEventWithAttendingUsers(event: Event): Promise<Event> {
+        const { id } = event;
+        return await this.genresNeoRepository.getRelationship(id, User.entityName, RelationshipSide.ToMe);
+    }
+
+    static associate(entityName): object {
+        if (Genre.relationships === null) {
+            return null;
+        }
+
+        return Genre.relationships[entityName];
     }
 }

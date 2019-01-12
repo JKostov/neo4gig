@@ -17,7 +17,7 @@ import { IGenresNeoService } from './interfaces/genres-service.neo.interface';
 export class GenresController {
     private readonly genresService: IGenresNeoService;
 
-    constructor(@Inject('GenressNeoService') genresService: IGenresNeoService) {
+    constructor(@Inject('GenresNeoService') genresService: IGenresNeoService) {
         this.genresService = genresService;
     }
 
