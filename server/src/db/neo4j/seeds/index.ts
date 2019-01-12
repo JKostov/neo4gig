@@ -9,8 +9,7 @@ import { RelationsSeed } from './relations-seed';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    // let seeders = [GenreSeed, UserSeed, EventSeed, RelationsSeed];
-    let seeders = [RelationsSeed];
+    let seeders = [GenreSeed, UserSeed, EventSeed, RelationsSeed];
     const type = process.argv[2];
 
     if (type === 'down') {

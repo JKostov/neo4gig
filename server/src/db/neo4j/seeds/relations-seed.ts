@@ -1,7 +1,5 @@
 import * as faker from 'faker';
 import { INestApplication } from '@nestjs/common';
-import * as stringifyObject from 'stringify-object';
-import * as moment from 'moment';
 
 export class RelationsSeed  {
     public static async up(app: INestApplication) {
@@ -13,20 +11,30 @@ export class RelationsSeed  {
         const genres = await genresNeoService.findAll();
         const events = await eventsNeoService.findAll();
 
-        users.forEach(async user => {
-            await usersNeoService.followUser(user, faker.random.arrayElement(users));
-            await usersNeoService.followUser(user, faker.random.arrayElement(users));
+        const promises = [];
 
-            await usersNeoService.followGenreById(user, faker.random.arrayElement(genres));
-            await usersNeoService.followGenreById(user, faker.random.arrayElement(genres));
-            await usersNeoService.followGenreById(user, faker.random.arrayElement(genres));
+        users.map( user => {
+            let u = faker.random.arrayElement(users);
+            if (u !== user) {
+                promises.push(usersNeoService.followUser(user, u));
+            }
+            u = faker.random.arrayElement(users);
+            if (u !== user) {
+                promises.push(usersNeoService.followUser(user, faker.random.arrayElement(users)));
+            }
 
-            await usersNeoService.attendEvent(user, faker.random.arrayElement(events));
+            promises.push(usersNeoService.followGenreById(user, faker.random.arrayElement(genres)));
+            promises.push(usersNeoService.followGenreById(user, faker.random.arrayElement(genres)));
+            promises.push(usersNeoService.followGenreById(user, faker.random.arrayElement(genres)));
+
+            promises.push(usersNeoService.attendEvent(user, faker.random.arrayElement(events)));
         });
 
         events.forEach(async event => {
-            await eventsNeoService.addGenreById(event, faker.random.arrayElement(genres));
+            promises.push(eventsNeoService.addGenreById(event, faker.random.arrayElement(genres)));
         });
+
+        return Promise.all(promises);
     }
 
     public static async down(app: INestApplication) {

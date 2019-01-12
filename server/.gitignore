@@ -392,3 +392,6 @@ docker-compose.yml
 dist
 
 node_modules
+
+# Custom
+.idea/*

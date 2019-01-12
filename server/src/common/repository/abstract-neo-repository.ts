@@ -61,7 +61,6 @@ export abstract class AbstractNeoRepository {
             `MATCH (n:${this.className}),(m:${entity2name}) ` +
              `WHERE id(n) = ${id1} AND id(m) = ${id2} CREATE (n)-[r:${relationShipName}]->(m) RETURN n, m, r LIMIT 1`,
         );
-        console.log(id1, id2);
 
         return this.createObjectsFromRecord(result);
     }
