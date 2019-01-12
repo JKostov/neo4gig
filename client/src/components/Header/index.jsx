@@ -25,7 +25,7 @@ class Header extends Component {
   leftMenu() {
     return (
       <React.Fragment>
-        <MenuItem name="home" onClick={() => this.itemChangeCallback('/')} />
+        <MenuItem name="most-anticipated" onClick={() => this.itemChangeCallback('/')} />
       </React.Fragment>
     );
   }
@@ -53,6 +53,14 @@ class Header extends Component {
     return (
       <React.Fragment>
         {adminMenuItem}
+        <MenuItem
+          name="genres"
+          onClick={() => this.itemChangeCallback('/genres')}
+        />
+        <MenuItem
+          name="feed"
+          onClick={() => this.itemChangeCallback('/feed')}
+        />
         <MenuItem
           name="logout"
           onClick={() => this.itemChangeCallback('/logout')}

@@ -8,11 +8,9 @@ export function login(email, password) {
   });
 }
 
-export function register(name, email, password) {
+export function register(user) {
   return axios.post('/auth/register', {
-    name,
-    email,
-    password,
+    user,
   });
 }
 

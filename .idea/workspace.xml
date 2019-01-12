@@ -2,45 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fb1ce4d-928e-4def-9d35-95fdeb5c6140" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/mailerconfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/ormconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/email-templates/password-recovery.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/email-templates/welcome.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/neo4j/seeds/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/postgresql/seeds/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/postgresql/seeds/user-seed.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/dto/login.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/dto/register.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/entity/password-recovery.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-jwt-options.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-reset-password.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-response.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-service.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/config/config.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/config/config.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/dto/createUser.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/entity/user.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/enum/status.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/interfaces/users-service.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/users.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/users.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/users/users.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/EventList/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/GenreList/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/User/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/User/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/thunks/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/thunks/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/seeds/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/seeds/users-genres-events.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genres-events.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/anticipatedEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/anticipatedEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/genre.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/genre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Register/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Register/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/AnticipatedEvents/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/AnticipatedEvents/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/AnticipatedEvents/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventList/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Feed/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Feed/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Genres/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Genres/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Genres/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GenreList/style.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,62 +27,76 @@
     <session id="1735835244">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="4" />
+          <entry key="css" value="87" />
           <entry key="gitignore" value="43" />
-          <entry key="js" value="14" />
-          <entry key="json" value="105" />
-          <entry key="ts" value="1567" />
+          <entry key="js" value="927" />
+          <entry key="json" value="310" />
+          <entry key="jsx" value="3303" />
+          <entry key="scss" value="26" />
+          <entry key="ts" value="2698" />
           <entry key="yml" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="CSS" value="87" />
           <entry key="Dockerfile" value="4" />
-          <entry key="JSON" value="105" />
-          <entry key="JavaScript" value="14" />
+          <entry key="JSON" value="310" />
+          <entry key="JSX Harmony" value="3303" />
+          <entry key="JavaScript" value="927" />
           <entry key="PLAIN_TEXT" value="43" />
-          <entry key="TypeScript" value="1567" />
+          <entry key="SCSS" value="26" />
+          <entry key="TypeScript" value="2698" />
           <entry key="YAML" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="2" />
+          <entry key="css" value="3" />
           <entry key="env" value="2" />
+          <entry key="eslintrc" value="1" />
           <entry key="example" value="2" />
           <entry key="gitignore" value="4" />
-          <entry key="js" value="3" />
-          <entry key="json" value="12" />
+          <entry key="js" value="30" />
+          <entry key="json" value="16" />
+          <entry key="jsx" value="34" />
           <entry key="pug" value="2" />
-          <entry key="ts" value="54" />
+          <entry key="scss" value="8" />
+          <entry key="ts" value="63" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="ActionScript" value="2" />
+          <entry key="CSS" value="3" />
           <entry key="Dockerfile" value="2" />
-          <entry key="JSON" value="11" />
-          <entry key="JavaScript" value="3" />
-          <entry key="PLAIN_TEXT" value="8" />
-          <entry key="TypeScript" value="54" />
+          <entry key="JSON" value="15" />
+          <entry key="JSX Harmony" value="34" />
+          <entry key="JavaScript" value="30" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="SCSS" value="8" />
+          <entry key="TypeScript" value="63" />
           <entry key="YAML" value="1" />
           <entry key="tsconfig" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="2" />
-          <entry key="TsLintLanguageService" value="2" />
-          <entry key="TypeScriptServerServiceImpl" value="2" />
+          <entry key="ESLintLanguageService" value="5" />
+          <entry key="TsLintLanguageService" value="3" />
+          <entry key="TypeScriptServerServiceImpl" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -115,66 +104,79 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.service.ts">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/Genres/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="278">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#1#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.controller.ts">
+        <entry file="file://$PROJECT_DIR$/client/src/components/GenreList/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="120">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
               <folding>
-                <element signature="e#0#182#0" expanded="true" />
+                <element signature="e#1#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/.env">
+        <entry file="file://$PROJECT_DIR$/client/src/components/GenreList/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" />
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/package.json">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/Feed/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+            <state relative-caret-position="165">
+              <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+              <folding>
+                <element signature="e#1#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/migrations/1547048014813-entities.ts">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/client/src/components/User/index.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding>
+                <element signature="e#1#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/api/index.js">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Genre/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="270">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding>
+                <element signature="e#1#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="3413" column="4" selection-start-line="3413" selection-start-column="4" selection-end-line="3413" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -182,37 +184,53 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/thunks/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="300">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/modules/config/config.module.ts">
+        <entry file="file://$PROJECT_DIR$/client/src/routes/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="440">
+              <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/modules/config/config.service.ts">
+        <entry file="file://$PROJECT_DIR$/client/db.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-331">
+              <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Labworks</find>
+      <find>anticipatedEvent</find>
+      <find>AnticipatedEvent</find>
+      <find>ANTICIPATED_EVENT</find>
+      <find>event</find>
+      <find>genre</find>
+      <find>Genre</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>AnticipatedEvents</replace>
+      <replace>Genre</replace>
+      <replace>GENRE</replace>
+      <replace>genre</replace>
+      <replace>event</replace>
+      <replace>User</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -220,25 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/Dockerfile" />
-        <option value="$PROJECT_DIR$/server/src/modules/neo4j/neo4j.module.ts" />
-        <option value="$PROJECT_DIR$/server/src/app.controller.ts" />
-        <option value="$PROJECT_DIR$/server/src/modules/neo4j/neo4j.provider.ts" />
-        <option value="$PROJECT_DIR$/server/src/app.service.ts" />
-        <option value="$PROJECT_DIR$/server/src/modules/neo4j/neo4j.service.ts" />
-        <option value="$PROJECT_DIR$/server/src/db/seeds/genres.js" />
-        <option value="$PROJECT_DIR$/server/src/db/seeds/genres.ts" />
-        <option value="$PROJECT_DIR$/server/src/db/seeds/users.ts" />
-        <option value="$PROJECT_DIR$/server/src/db/seeds/users-genres-events.ts" />
-        <option value="$PROJECT_DIR$/server/src/db/seeds/index.ts" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/server/.gitignore" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/server/src/db/neo4j/seeds/index.ts" />
-        <option value="$PROJECT_DIR$/server/ormconfig.json" />
-        <option value="$PROJECT_DIR$/server/src/modules/users/dto/createUser.dto.ts" />
-        <option value="$PROJECT_DIR$/server/src/modules/users/entity/user.entity.ts" />
-        <option value="$PROJECT_DIR$/server/src/modules/users/interfaces/users-service.interface.ts" />
         <option value="$PROJECT_DIR$/server/src/modules/users/users.controller.ts" />
         <option value="$PROJECT_DIR$/server/src/modules/users/users.module.ts" />
         <option value="$PROJECT_DIR$/server/src/modules/users/users.service.ts" />
@@ -255,7 +254,40 @@
         <option value="$PROJECT_DIR$/server/package.json" />
         <option value="$PROJECT_DIR$/server/src/main.ts" />
         <option value="$PROJECT_DIR$/server/src/app.module.ts" />
+        <option value="$PROJECT_DIR$/server/src/modules/neo4j/neo4j.service.ts" />
+        <option value="$PROJECT_DIR$/server/src/db/neo4j/seeds/seed.ts" />
+        <option value="$PROJECT_DIR$/server/src/db/neo4j/seeds/index.ts" />
+        <option value="$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genre-relationship.ts" />
+        <option value="$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genres-events.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Header/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/pages/MostAnticipated/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/reducers/mostAnticipated.js" />
+        <option value="$PROJECT_DIR$/client/src/api/seeds.js" />
+        <option value="$PROJECT_DIR$/client/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/client/src/thunks/anticipatedEvents.js" />
         <option value="$PROJECT_DIR$/client/src/api/index.js" />
+        <option value="$PROJECT_DIR$/client/src/thunks/genre.js" />
+        <option value="$PROJECT_DIR$/client/src/reducers/anticipatedEvents.js" />
+        <option value="$PROJECT_DIR$/client/src/reducers/genre.js" />
+        <option value="$PROJECT_DIR$/client/src/consts/actions.js" />
+        <option value="$PROJECT_DIR$/client/db.json" />
+        <option value="$PROJECT_DIR$/client/src/pages/Genres/style.css" />
+        <option value="$PROJECT_DIR$/client/src/components/Genre/style.css" />
+        <option value="$PROJECT_DIR$/client/src/components/Event/style.scss" />
+        <option value="$PROJECT_DIR$/client/src/components/Event/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Genre/style.scss" />
+        <option value="$PROJECT_DIR$/client/src/components/Genre/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Register/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/api/auth.js" />
+        <option value="$PROJECT_DIR$/client/src/api/anticipatedEvents.js" />
+        <option value="$PROJECT_DIR$/client/src/api/genre.js" />
+        <option value="$PROJECT_DIR$/client/src/components/GenreList/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/pages/Genres/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/components/EventList/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/pages/AnticipatedEvents/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/components/User/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/routes/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/pages/Feed/index.jsx" />
         <option value="$PROJECT_DIR$/client/src/thunks/auth.js" />
       </list>
     </option>
@@ -267,6 +299,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/client/node_modules" />
     <handled-path value="$PROJECT_DIR$/server/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
@@ -279,10 +312,10 @@
     <dismissed value="$PROJECT_DIR$/server/package.json" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2021" />
-    <option name="y" value="236" />
-    <option name="width" value="1624" />
-    <option name="height" value="969" />
+    <option name="x" value="1850" />
+    <option name="y" value="96" />
+    <option name="width" value="1612" />
+    <option name="height" value="925" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -292,7 +325,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -316,7 +348,45 @@
               <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="GenreList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="Feed" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="Genres" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
@@ -325,99 +395,38 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="thunks" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="postgresql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="postgresql" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neo4gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neo4gig" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/client/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/server/node_modules/tslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server/src" />
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$/server/src/modules" />
-      <recent name="$PROJECT_DIR$/server/src/db/postgresql/seeds" />
-      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/client/src/components/User" />
+      <recent name="$PROJECT_DIR$/client/src/components/EventList" />
+      <recent name="$PROJECT_DIR$/client/src/components/GenreList" />
+      <recent name="$PROJECT_DIR$/client/src/components/Event" />
+      <recent name="$PROJECT_DIR$/client/src/pages/AnticipatedEvents" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server/src/db/neo4j" />
@@ -448,19 +457,22 @@
       <option name="presentableId" value="Default" />
       <updated>1546892196421</updated>
       <workItem from="1546892199002" duration="7522000" />
-      <workItem from="1547044285392" duration="3717000" />
+      <workItem from="1547044285392" duration="11698000" />
+      <workItem from="1547198548249" duration="1603000" />
+      <workItem from="1547245730145" duration="6905000" />
+      <workItem from="1547316432563" duration="4514000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11239000" />
+    <option name="totallyTimeSpent" value="32242000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1623" y="245" width="1624" height="969" extended-state="0" />
+    <frame x="1850" y="96" width="1612" height="925" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2528445" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49939975" visible="true" weight="0.22292994" />
+      <window_info id="Structure" order="1" sideWeight="0.5006002" side_tool="true" weight="0.22292994" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
@@ -493,21 +505,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/neo4j/neo4j.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/db/seeds/genres.ts" />
+    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/seed.ts" />
     <entry file="file://$PROJECT_DIR$/server/src/modules/neo4j/neo4j.provider.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -517,325 +515,345 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/modules/neo4j/neo4j.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="450">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/tslint.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genres-events.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/nodemon.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/app.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/dto/createUser.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/enum/status.enum.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/interfaces/users-service.interface.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/seeds/user-seed.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/seeds/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="e#23#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/dto/login.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/dto/register.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/entity/password-recovery.entity.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-jwt-options.interface.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-reset-password.interface.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-response.interface.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/interfaces/auth-service.interface.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/auth.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/auth.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/auth/auth.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/common/middleware/index.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/common/email-templates/password-recovery.pug">
+    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genre-relationship.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/common/email-templates/welcome.pug">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/app.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="86" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/entity/user.entity.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/mailerconfig.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/ormconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="393" column="12" selection-start-line="393" selection-start-column="12" selection-end-line="393" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/.env.example">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/users/users.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/config/config.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/modules/config/config.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="780">
           <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/migrations/1547048014813-entities.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/seeds/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/db/postgresql/seeds/user-seed.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/db/neo4j/seeds/users-genres-events.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/ForgotPassword/index.jsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Login/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/api/seeds.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/AppLayout/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/api/index.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/thunks/anticipatedEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="9" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/anticipatedEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#2#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/consts/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/.react-webpack-boilerplate.eslintrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/genre.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#1#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="e#1#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Genres/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Genre/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Event/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Register/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Register/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+            <element signature="e#222#258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/api/anticipatedEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="60" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/api/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/api/forgotPassword.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Event/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="38" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/EventList/style.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/EventList/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/AnticipatedEvents/style.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Login/index.jsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/User/style.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/AnticipatedEvents/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/api/genre.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/thunks/genre.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="3413" column="4" selection-start-line="3413" selection-start-column="4" selection-end-line="3413" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/User/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/db.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-331">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Genre/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/GenreList/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/GenreList/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/routes/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Genres/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Feed/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="e#1#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/thunks/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="300">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>

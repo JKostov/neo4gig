@@ -1,12 +1,10 @@
 
 import axios from 'axios';
 
-const { API_URL } = process.env;
-
 const development = process.env.NODE_ENV === 'development';
 
 const instance = axios.create({
-  baseURL: `${API_URL}/`,
+  baseURL: 'http://localhost:3000',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

@@ -5,6 +5,9 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 import Loadable from 'react-loadable';
 import AppLayout from '../components/AppLayout';
+import MostAnticipated from '../pages/AnticipatedEvents';
+import Genres from '../pages/Genres';
+import Feed from '../pages/Feed';
 
 const dynamicImport = loader =>
   Loadable({
@@ -16,7 +19,9 @@ const AdminRoutes = () => <Route path="/admin" render={() => 'Admin route'} />;
 
 const LoggedInList = ({ isAdmin }) => (
   <Switch>
-    <Route exact path="/" render={() => 'Hello world.'} />
+    <Route exact path="/" component={MostAnticipated} />
+    <Route exact path="/genres" component={dynamicImport(() => import('../pages/Genres'))} />
+    <Route exact path="/feed" component={dynamicImport(() => import('../pages/Feed'))} />
     <Route path="/logout" component={dynamicImport(() => import('../components/Logout'))} />
     {isAdmin && <AdminRoutes />}
     <Redirect to="/" />

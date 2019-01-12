@@ -1,0 +1,90 @@
+{
+  "anticipatedEvents": [
+    {
+      "id": "1",
+      "venue": "Belgrade",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "2",
+      "venue": "Belgrade",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "3",
+      "venue": "Belgrade",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "4",
+      "venue": "Nis",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "5",
+      "venue": "Nis",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "6",
+      "venue": "Nis",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "7",
+      "venue": "Novi Sad",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "8",
+      "venue": "Novi Sad",
+      "time": "21:00",
+      "date": "23.01.2019"
+    },
+    {
+      "id": "9",
+      "venue": "Novi Sad",
+      "time": "21:00",
+      "date": "23.01.2019"
+    }
+  ],
+  "genres": [
+    {
+      "id": "1",
+      "name": "Rock",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    },
+    {
+      "id": "2",
+      "name": "Metal",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    },
+    {
+      "id": "3",
+      "name": "Black metal",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    },
+    {
+      "id": "4",
+      "name": "Pop",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    },
+    {
+      "id": "5",
+      "name": "Jazz",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    },
+    {
+      "id": "6",
+      "name": "Classical",
+      "description": "Lorem ipsum lorem ipsum lorem ipsum"
+    }
+  ]
+}
