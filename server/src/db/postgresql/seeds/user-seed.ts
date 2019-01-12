@@ -10,7 +10,7 @@ export class UserSeed  {
       const usersRepository = app.get('UserRepository');
       const insertData = [];
 
-      for (let i = 0; i < 5; i += 1) {
+      for (let i = 0; i < 10; i += 1) {
 
         const user = new User();
 
