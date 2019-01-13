@@ -20,7 +20,7 @@ export class RelationsSeed  {
             }
             u = faker.random.arrayElement(users);
             if (u !== user) {
-                promises.push(usersNeoService.followUser(user, faker.random.arrayElement(users)));
+                promises.push(usersNeoService.followUser(user, u));
             }
 
             promises.push(usersNeoService.followGenreById(user, faker.random.arrayElement(genres)));
@@ -31,6 +31,7 @@ export class RelationsSeed  {
         });
 
         events.forEach(async event => {
+            promises.push(eventsNeoService.addGenreById(event, faker.random.arrayElement(genres)));
             promises.push(eventsNeoService.addGenreById(event, faker.random.arrayElement(genres)));
         });
 
