@@ -1,21 +1,12 @@
-import {IsString, IsBoolean, IsEmail, IsOptional} from 'class-validator';
+import { IsEmail, IsString, IsOptional } from 'class-validator';
 
-export class CreateUserDto {
+export class CreateUserPgDto {
 
     @IsString()
     readonly name: string;
 
     @IsEmail()
     readonly email: string;
-
-    @IsString()
-    readonly city: string;
-
-    @IsString()
-    readonly instrument: string;
-
-    @IsBoolean()
-    readonly isMusician: boolean;
 
     @IsString()
     readonly password: string;

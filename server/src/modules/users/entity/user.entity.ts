@@ -9,7 +9,7 @@ import {
 import { IsEmail, IsUUID } from 'class-validator';
 import { PasswordRecovery } from '../../auth/entity/password-recovery.entity';
 import { Status } from '../enum/status.enum';
-import { CreateUserDto } from '../dto/createUser.dto';
+import { CreateUserPgDto } from '../dto/createUser.pg.dto';
 
 @Entity({
   name: 'users',
@@ -17,7 +17,7 @@ import { CreateUserDto } from '../dto/createUser.dto';
 export class User {
 
     constructor();
-    constructor(user: CreateUserDto);
+    constructor(user: CreateUserPgDto);
     constructor(user?: any)
     {
         this.id = user && user.id || undefined;

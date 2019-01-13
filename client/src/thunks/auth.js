@@ -20,6 +20,7 @@ export function login(email, password) {
       };
     })
     .then((payload) => {
+      console.log(payload);
       dispatch(loginUser(payload));
       localStorage.setItem('_token', payload.token);
     });

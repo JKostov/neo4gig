@@ -23,6 +23,7 @@ export class UsersNeoService implements IUsersNeoService {
     }
 
     async findOne(query: object): Promise<User> {
+        console.log(await this.usersNeoRepository.findOne(query), 'tu li je ');
         return await this.usersNeoRepository.findOne(query);
     }
 
@@ -103,7 +104,7 @@ export class UsersNeoService implements IUsersNeoService {
 
     async findUserWithFollowingGenres(user: User): Promise<User> {
         const { id } = user;
-        return await this.usersNeoRepository.getRelationship(id, Genre.entityName, RelationshipSide.ToMe);
+        return await this.usersNeoRepository.getRelationship(id, Genre.entityName, RelationshipSide.FromMe);
     }
 
     async findUserWithAttendingFutureEvents(user: User): Promise<User> {

@@ -2,7 +2,7 @@ import { AbstractNeoRepository } from '../../../common/repository/abstract-neo-r
 import { User } from '../entity/user.neo.entity';
 import { Neo4jService } from '../../neo4j/neo4j.service';
 
-class UsersNeoRepository extends AbstractNeoRepository {
+export class UsersNeoRepository extends AbstractNeoRepository {
     constructor(neo4jService: Neo4jService) {
         super(User, neo4jService);
     }

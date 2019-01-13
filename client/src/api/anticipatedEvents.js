@@ -1,6 +1,6 @@
 
-import axios from 'axios';
+import axios from '.';
 
 export function getAnticipatedEvents() {
-  return axios.get('http://localhost:4000/anticipatedEvents');
+  return axios.get('/events');
 }

@@ -22,27 +22,27 @@ export class GenresController {
     }
 
     @Get()
-    public async getUsers(@Response() res) {
-        const users = await this.genresService.findAll();
-        return res.status(HttpStatus.OK).json(users);
+    public async getGenres(@Response() res) {
+        const genres = await this.genresService.findAll();
+        return res.status(HttpStatus.OK).json(genres);
     }
 
     @Get('/:id')
-    public async getUser(@Response() res, @Param() param) {
-        const user = await this.genresService.findById(param.id);
-        return res.status(HttpStatus.OK).json(user);
+    public async getGenre(@Response() res, @Param() param) {
+        const genre = await this.genresService.findById(param.id);
+        return res.status(HttpStatus.OK).json(genre);
     }
 
     @Post()
     @UsePipes(new ValidationPipe())
-    public async createUser(@Response() res, @Body() createGenreNeoDto: CreateGenreNeoDto) {
-        const user = await this.genresService.create(createGenreNeoDto);
-        return res.status(HttpStatus.OK).json(user);
+    public async createGenre(@Response() res, @Body() createGenreNeoDto: CreateGenreNeoDto) {
+        const genre = await this.genresService.create(createGenreNeoDto);
+        return res.status(HttpStatus.OK).json(genre);
     }
 
     @Put('/:id')
-    public async updateUser(@Param() param, @Response() res, @Body() body) {
-        const user = await this.genresService.update(param.id, body);
-        return res.status(HttpStatus.OK).json(user);
+    public async updateGenre(@Param() param, @Response() res, @Body() body) {
+        const genre = await this.genresService.update(param.id, body);
+        return res.status(HttpStatus.OK).json(genre);
     }
 }

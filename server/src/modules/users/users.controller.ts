@@ -11,8 +11,8 @@ import {
     UsePipes,
     ValidationPipe, Inject,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/createUser.dto';
 import {IUsersService} from './interfaces/users-service.interface';
+import {CreateUserDto} from './dto/createUser.dto';
 
 @Controller('users')
 export class UsersController {

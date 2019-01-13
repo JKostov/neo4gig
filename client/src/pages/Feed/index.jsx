@@ -11,7 +11,7 @@ class Feed extends Component {
     const { user } = this.props;
     return (
       <Fragment>
-        {/*<User user={user} />*/}
+        <User user={user} />
       </Fragment>);
   }
 }
@@ -22,7 +22,7 @@ Feed.propTypes = {
 
 const mapStateToProps = ({ auth }) => (
   {
-    user: auth.get('user').get('neo'),
+    user: auth.get('user').get('user'),
   }
 );
 

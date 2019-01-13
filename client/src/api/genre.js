@@ -1,6 +1,6 @@
 
-import axios from 'axios';
+import axios from '.';
 
 export function getGenres() {
-  return axios.get('http://localhost:4000/genres');
+  return axios.get('/genres');
 }

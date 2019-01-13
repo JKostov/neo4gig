@@ -9,17 +9,14 @@ const Genre = ({
   },
 }) => (
   <div className={style.card} key={id}>
-    <div>{name}</div>
+    <div><strong>{name}</strong></div>
+    <div>Description:</div>
     <div>{description}</div>
   </div>
 );
 
 Genre.propTypes = {
-  genre: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
+  genre: PropTypes.shape({}).isRequired,
 };
 
 export default Genre;

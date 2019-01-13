@@ -14,11 +14,7 @@ GenreList.defaultProps = {
 };
 
 GenreList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired),
+  genres: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
 };
 
 export default GenreList;

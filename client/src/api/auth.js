@@ -9,9 +9,7 @@ export function login(email, password) {
 }
 
 export function register(user) {
-  return axios.post('/auth/register', {
-    user,
-  });
+  return axios.post('/auth/register', user);
 }
 
 export function resetPassword(password, token) {
