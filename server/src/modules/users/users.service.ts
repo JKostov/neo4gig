@@ -1,16 +1,22 @@
 
-import {Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import {Injectable, HttpException, HttpStatus, Inject} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository } from 'typeorm';
-import { CreateUserDto } from './dto/createUser.dto';
+import { CreateUserPgDto } from './dto/createUser.pg.dto';
 import { User } from './entity/user.entity';
+import { User as NeoUser } from './entity/user.neo.entity';
 import { IUsersService } from './interfaces/users-service.interface';
+import {UsersNeoRepository} from './repository/users-repository.neo';
+import {CreateUserNeoDto} from './dto/createUser.neo.dto';
+import {CreateUserDto} from './dto/createUser.dto';
 
 @Injectable()
 export class UsersService implements IUsersService {
     constructor(
         @InjectRepository(User)
         private readonly usersRepository: Repository<User>,
+        @Inject('UsersNeoRepository')
+        private readonly usersNeoRepository: UsersNeoRepository,
     ) {}
 
     async findAll(): Promise<User[]> {
@@ -26,10 +32,14 @@ export class UsersService implements IUsersService {
     }
 
     async create(createUserDto: CreateUserDto): Promise<User> {
-        return await this.usersRepository.save(new User(createUserDto));
+
+        const { createNeoUserDto, createUserPgDto } = UsersService.getPgAndNeoUserDtos(createUserDto);
+
+        await this.usersNeoRepository.save(new NeoUser(createNeoUserDto));
+        return await this.usersRepository.save(new User(createUserPgDto));
     }
 
-    async update(id: string, newValue: CreateUserDto): Promise<User | null> {
+    async update(id: string, newValue: CreateUserPgDto): Promise<User | null> {
 
         let user = await this.usersRepository.findOne(id);
 
@@ -47,7 +57,7 @@ export class UsersService implements IUsersService {
         return await this.usersRepository.delete(id);
     }
 
-    private _assign(user: User, newValue: CreateUserDto) {
+    private _assign(user: User, newValue: CreateUserPgDto) {
         // tslint:disable-next-line:no-string-literal
         for (const key of Object.keys(newValue)) {
             if (user[key] !== newValue[key]) {
@@ -56,5 +66,22 @@ export class UsersService implements IUsersService {
             }
         }
         return user;
+    }
+
+    private static getPgAndNeoUserDtos(createUserDto: CreateUserDto) {
+        const { name, instrument, isMusician, city, ...pgUser} = createUserDto;
+        const createNeoUserDto: CreateUserNeoDto = {
+            name,
+            instrument,
+            isMusician,
+            city,
+        };
+
+        const createUserPgDto: CreateUserPgDto = {name, ...pgUser};
+
+        return {
+            createNeoUserDto,
+            createUserPgDto,
+        };
     }
 }

@@ -14,12 +14,7 @@ EventList.defaultProps = {
 };
 
 EventList.propTypes = {
-  events: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    venue: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-  }).isRequired),
+  events: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
 };
 
 export default EventList;

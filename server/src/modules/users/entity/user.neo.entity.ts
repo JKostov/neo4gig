@@ -34,7 +34,7 @@ export class User extends AbstractNeoEntity {
         this.email = user && user.email || null;
         this.city = user && user.city || null;
         this.instrument = user && user.instrument || null;
-        this.isMusician = user && user.isMusician || null;
+        this.isMusician = user && user.isMusician;
         this.following = user && user.following || [];
         this.followers = user && user.followers || [];
         this.genres = user && user.followers || [];

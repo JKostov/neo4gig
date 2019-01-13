@@ -2,25 +2,29 @@ import {HttpException, HttpStatus, Inject, Injectable} from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import * as crypto from 'crypto';
 import * as moment from 'moment';
-import { v4 as uuid } from 'uuid';
-import { IJwtOptions } from './interfaces/auth-jwt-options.interface';
-import { IAuthResponse } from './interfaces/auth-response.interface';
-import { UsersService } from '../users/users.service';
-import { ConfigService } from '../config/config.service';
-import { IResetPassword } from './interfaces/auth-reset-password.interface';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { PasswordRecovery } from './entity/password-recovery.entity';
-import { Status } from '../users/enum/status.enum';
-import { IAuthService } from './interfaces/auth-service.interface';
+import {v4 as uuid} from 'uuid';
+import {IJwtOptions} from './interfaces/auth-jwt-options.interface';
+import {IAuthResponse} from './interfaces/auth-response.interface';
+import {UsersService} from '../users/users.service';
+import {ConfigService} from '../config/config.service';
+import {IResetPassword} from './interfaces/auth-reset-password.interface';
+import {Repository} from 'typeorm';
+import {InjectRepository} from '@nestjs/typeorm';
+import {PasswordRecovery} from './entity/password-recovery.entity';
+import {Status} from '../users/enum/status.enum';
+import {IAuthService} from './interfaces/auth-service.interface';
 import {MailerProvider} from '@nest-modules/mailer';
 import {User} from '../users/entity/user.entity';
+import {User as NeoUser} from '../users/entity/user.neo.entity';
+import {UsersNeoService} from '../users/users.neo.service';
 
 @Injectable()
 export class AuthService implements IAuthService {
     constructor(
         @InjectRepository(PasswordRecovery)
         private readonly passwordRecoveryRepository: Repository<PasswordRecovery>,
+        @Inject('UsersNeoService')
+        private readonly usersNeoService: UsersNeoService,
         @Inject('MailerProvider')
         private readonly mailerProvider: MailerProvider,
         private readonly usersService: UsersService,
@@ -43,13 +47,24 @@ export class AuthService implements IAuthService {
 
      public async login(credentials: { email: string; password: string }): Promise<IAuthResponse> {
 
-         const user = await this.usersService.findOne({
+         const pgUser = await this.usersService.findOne({
             where: {
                 email: credentials.email,
                 password: crypto.createHmac('sha256', credentials.password).digest('hex'),
             },
         });
-         if (!user) throw new HttpException('User not found.', HttpStatus.NOT_FOUND);
+
+         if (!pgUser) throw new HttpException('User not found.', HttpStatus.NOT_FOUND);
+
+         const neoUser: NeoUser = await this.usersNeoService.findOne({ name: pgUser.name });
+
+         if (!neoUser) throw new HttpException('User not found in Neo4j.', HttpStatus.NOT_FOUND);
+         const { name, id, ...neoAttributes } = neoUser;
+
+         const user = {
+             ...pgUser,
+             ...neoAttributes,
+         };
 
          const payload = {
             id: user.id,
@@ -65,7 +80,6 @@ export class AuthService implements IAuthService {
     }
 
     public async register(credentials): Promise<void | HttpException> {
-
         const encryptedCredentials = {
             ...credentials,
             password: crypto.createHmac('sha256', credentials.password).digest('hex'),
