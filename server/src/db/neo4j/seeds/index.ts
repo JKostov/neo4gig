@@ -1,30 +1,32 @@
 #!/usr/bin/env ts-node
 import { NestFactory } from '@nestjs/core';
 import {AppModule} from '../../../app.module';
-import { usersGenreRelationshipQuery } from './users-genre-relationship';
-import { createQuery } from './users-genres-events';
+import { UserSeed } from './users-seed';
+import { GenreSeed } from './genres-seed';
+import { EventSeed } from './events-seed';
+import { RelationsSeed } from './relations-seed';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    const neo4jService = app.get('Neo4jService');
-
+    let seeders = [GenreSeed, UserSeed, EventSeed, RelationsSeed];
     const type = process.argv[2];
 
-    try {
-        if (type === 'up') {
-            await neo4jService.query(createQuery);
-            await neo4jService.query(usersGenreRelationshipQuery);
-
-        } else {
-            await neo4jService.query('START r=relationship(*) DELETE r');
-            await neo4jService.query('MATCH (n) DELETE n');
-        }
-        console.log(`DB seeds successfully ran ${type}.`);
-        process.exit(0);
-    } catch(e) {
-        console.log(e.toString());
-        process.exit(0);
+    if (type === 'down') {
+        seeders = seeders.reverse();
     }
+
+    seeders.reduce( (chain, item) =>
+            chain.then(() => item[type](app)),
+        Promise.resolve(),
+    )
+        .then(() => {
+            console.log(`Neo4j seeds successfully ran ${type}.`);
+            process.exit(0);
+        })
+        .catch((ex) => {
+            console.log(ex);
+            process.exit(0);
+        });
 }
 bootstrap();

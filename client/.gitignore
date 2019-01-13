@@ -1,4 +1,6 @@
 .cache
-.idea
+.idea/*
 dist
 node_modules
+
+.env
