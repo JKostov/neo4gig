@@ -2,6 +2,7 @@ import { User } from '../entity/user.neo.entity';
 import { CreateUserNeoDto } from '../dto/createUser.neo.dto';
 import { Genre } from '../../genres/entity/genre.neo.entity';
 import { Event } from '../../events/entity/event.neo.entity';
+import { Band } from '../../bands/entity/band.neo.entity';
 
 export interface IUsersNeoService {
     findAll(): Promise<User[]>;
@@ -27,4 +28,7 @@ export interface IUsersNeoService {
     checkForFollowRelationship(id1: number, id2: number): Promise<boolean>;
     checkForAttendanceRelationship(id1: number, id2: number): Promise<boolean>;
     checkForInterestsRelationship(id1: number, id2: number): Promise<boolean>;
+    findUserWithLikedBands(user: User): Promise<User>;
+    findUserWithHisBand(user: User): Promise<User>;
+    likeBand(currentUser: User, bandToLike: Band): Promise<Band>;
 }

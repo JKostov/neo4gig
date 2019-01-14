@@ -4,12 +4,13 @@ import {AppModule} from '../../../app.module';
 import { UserSeed } from './users-seed';
 import { GenreSeed } from './genres-seed';
 import { EventSeed } from './events-seed';
+import { BandSeed } from './bands-seed';
 import { RelationsSeed } from './relations-seed';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    let seeders = [GenreSeed, UserSeed, EventSeed, RelationsSeed];
+    let seeders = [GenreSeed, UserSeed, EventSeed, BandSeed, RelationsSeed];
     const type = process.argv[2];
 
     if (type === 'down') {
