@@ -7,6 +7,7 @@ import {Event} from '../events/entity/event.neo.entity';
 import {RelationshipSide} from '../../common/enum/neo-relationship-side.enum';
 import {QueryWith} from '../../common/entity/neo-query-with';
 import * as moment from 'moment';
+import { Band } from '../bands/entity/band.neo.entity';
 
 @Injectable()
 export class UsersNeoService implements IUsersNeoService {
@@ -140,5 +141,22 @@ export class UsersNeoService implements IUsersNeoService {
 
     async checkForInterestsRelationship(id1: number, id2: number): Promise<boolean> {
         return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'Genre');
+    }
+
+    async findUserWithLikedBands(user: User): Promise<User> {
+        const { id } = user;
+        return await this.usersNeoRepository.getRelationship(id, Band.entityName, RelationshipSide.FromMe);
+    }
+
+    async findUserWithHisBand(user: User): Promise<User> {
+        const { id } = user;
+        return await this.usersNeoRepository.getRelationship(id, Band.entityName, RelationshipSide.ToMe);
+    }
+
+    async likeBand(currentUser: User, bandToLike: Band): Promise<Band> {
+        const currentUserId = currentUser.id;
+        const bandToLikeId = bandToLike.id;
+
+        return await this.usersNeoRepository.createRelationship(currentUserId, bandToLikeId, Band.entityName);
     }
 }

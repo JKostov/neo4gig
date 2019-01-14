@@ -1,6 +1,7 @@
 import { CreateUserNeoDto } from '../dto/createUser.neo.dto';
 import { Genre } from '../../genres/entity/genre.neo.entity';
 import { Event } from '../../events/entity/event.neo.entity';
+import { Band } from '../../bands/entity/band.neo.entity';
 import { AbstractNeoEntity } from '../../../common/entity/abstract-neo-entity.';
 
 export class User extends AbstractNeoEntity {
@@ -25,6 +26,15 @@ export class User extends AbstractNeoEntity {
             property: 'events',
             className: Event,
         },
+        'Band->': {
+            relationShipName: 'LIKES',
+            property: 'likedBands',
+            className: User,
+        },
+        'Band<-': {
+            relationShipName: 'HAS_MEMBER',
+            property: 'band',
+        },
     };
 
     constructor();
@@ -41,7 +51,8 @@ export class User extends AbstractNeoEntity {
         this.following = user && user.following || [];
         this.followers = user && user.followers || [];
         this.genres = user && user.followers || [];
-        this.events = user && user.events || [];
+        this.likedBands = user && user.likedBands || [];
+        this.band = user && user.band || null;
     }
 
     id: number;
@@ -63,6 +74,10 @@ export class User extends AbstractNeoEntity {
     genres: Genre[];
 
     events: Event[];
+
+    likedBands: Band[];
+
+    band: Band;
 
     static associate(entityName): object {
         if (User.relationships === null) {
