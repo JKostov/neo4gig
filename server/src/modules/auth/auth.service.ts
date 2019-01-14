@@ -54,11 +54,11 @@ export class AuthService implements IAuthService {
             },
         });
 
-         if (!pgUser) throw new HttpException('User not found.', HttpStatus.NOT_FOUND);
+         if (!pgUser) throw new HttpException('Profile not found.', HttpStatus.NOT_FOUND);
 
          const neoUser: NeoUser = await this.usersNeoService.findOne({ name: pgUser.name });
 
-         if (!neoUser) throw new HttpException('User not found in Neo4j.', HttpStatus.NOT_FOUND);
+         if (!neoUser) throw new HttpException('Profile not found in Neo4j.', HttpStatus.NOT_FOUND);
          const { name, id, ...neoAttributes } = neoUser;
 
          const user = {
@@ -108,7 +108,7 @@ export class AuthService implements IAuthService {
                 email,
             },
         });
-        if (!user) throw new HttpException('User not found.', HttpStatus.NOT_FOUND);
+        if (!user) throw new HttpException('Profile not found.', HttpStatus.NOT_FOUND);
 
         const token = uuid();
 

@@ -12,7 +12,7 @@ export class UserSeed  {
 
     public static async down(app: INestApplication) {
         const neo4jService = app.get('Neo4jService');
-        return neo4jService.query('MATCH (n: User) DELETE n');
+        return neo4jService.query('MATCH (n: Profile) DELETE n');
     }
 
     private static async getQuery(app: INestApplication): Promise<string> {
@@ -23,7 +23,7 @@ export class UserSeed  {
         return `WITH ${stringData} as data\n` +
                'UNWIND data.items as users\n' +
                'FOREACH (u IN users |\n' +
-               'CREATE (user:User {name: u.name, email: u.email, isMusician: u.isMusician, instrument: u.instrument, city:u.city})\n' +
+               'CREATE (user:Profile {name: u.name, email: u.email, isMusician: u.isMusician, instrument: u.instrument, city:u.city})\n' +
                ')';
     }
 

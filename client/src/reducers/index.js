@@ -7,6 +7,7 @@ import auth from './auth';
 import breadcrumb from './breadcrumb';
 import anticipatedEvents from './anticipatedEvents';
 import genre from './genre';
+import feed from './feed';
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ const combinedReducers = combineReducers({
   breadcrumb,
   anticipatedEvents,
   genre,
+  feed,
 });
 
 export default persistReducer(persistConfig, combinedReducers);
