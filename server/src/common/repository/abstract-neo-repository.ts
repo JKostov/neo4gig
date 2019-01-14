@@ -140,6 +140,17 @@ export abstract class AbstractNeoRepository {
         return instance;
     }
 
+    public async checkForRelationShip(id1: number, id2: number, entity2name: string): Promise<boolean> {
+        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const result = await this.neo4jService.query(
+            `MATCH (n:${this.className})-` +
+            `[r:${relationShipName}]->(m:${entity2name})` +
+            `WHERE id(n) = ${id1} AND id(m) = ${id2} RETURN r`,
+        );
+
+        return result.length !== 0;
+    }
+
     public async getRelationship(id1: number, entity2name: string, side: RelationshipSide): Promise<object> {
         const instance = await this.findById(id1);
         if (instance === null) {
