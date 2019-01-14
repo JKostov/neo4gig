@@ -1,6 +1,7 @@
 import { Neo4jService } from '../../modules/neo4j/neo4j.service';
 import { RelationshipSide } from '../enum/neo-relationship-side.enum';
 import * as stringifyObject from 'stringify-object';
+import { QueryWith } from '../entity/neo-query-with';
 
 export abstract class AbstractNeoRepository {
     private readonly className: string;
@@ -19,6 +20,28 @@ export abstract class AbstractNeoRepository {
         return this.createObjectFromRecord(records);
     }
 
+    public async findByIdWith(id: number, withArray: QueryWith[]): Promise<object> {
+        const instance = await this.findById(id);
+        if (instance === null) {
+            return null;
+        }
+
+        for (const relationship of withArray) {
+            const { className, side } = relationship;
+            const relship = this.classEntity.associate(`${className}${side}`);
+            const { relationShipName, property } = relship;
+
+            const result = await this.neo4jService.query(
+                `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
+                `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(m:${className})` +
+                ` WHERE id(n) = ${id} RETURN m`);
+
+            instance[property] = this.createObjectsFromRecord(result, relship.className);
+        }
+
+        return instance;
+    }
+
     public async findOne(query: object): Promise<object> {
         const queryString = this.createStringFromObject(query);
         const records = await this.neo4jService.query(`MATCH (n:${this.className} ${queryString}) RETURN n LIMIT 1`);
@@ -26,16 +49,20 @@ export abstract class AbstractNeoRepository {
         return this.createObjectFromRecord(records);
     }
 
-    public async find(query: object): Promise<object> {
+    public async find(query: object, skip: number = 0, limit: number = null): Promise<object> {
         const queryString = this.createStringFromObject(query);
-        const records = await this.neo4jService.query(`MATCH (n:${this.className} ${queryString}) RETURN n`);
+        const records = await this.neo4jService.query(
+            `MATCH (n:${this.className} ${queryString}) RETURN n SKIP ${skip} ${limit ? 'LIMIT ' + limit : ''}`,
+        );
 
         return this.createObjectsFromRecord(records);
     }
 
-    public async findWithOperator(query: object): Promise<object> {
+    public async findWithOperator(query: object, skip: number = 0, limit: number = null): Promise<object> {
         const queryString = this.convertQueryToQueryString(query);
-        const records = await this.neo4jService.query(`MATCH (n:${this.className}) WHERE ${queryString} RETURN n`);
+        const records = await this.neo4jService.query(
+            `MATCH (n:${this.className}) WHERE ${queryString} RETURN n SKIP ${skip} ${limit ? 'LIMIT ' + limit : ''}`
+        );
 
         return this.createObjectsFromRecord(records);
     }
