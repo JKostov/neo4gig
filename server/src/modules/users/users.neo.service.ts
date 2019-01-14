@@ -23,7 +23,6 @@ export class UsersNeoService implements IUsersNeoService {
     }
 
     async findOne(query: object): Promise<User> {
-        console.log(await this.usersNeoRepository.findOne(query), 'tu li je ');
         return await this.usersNeoRepository.findOne(query);
     }
 

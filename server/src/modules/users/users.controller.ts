@@ -34,6 +34,12 @@ export class UsersController {
         return res.status(HttpStatus.OK).json(user);
     }
 
+    @Get('/:id/feed')
+    public async getUserFeed(@Response() res, @Param() param) {
+        const user = await this.usersService.getUserFeed(param.id);
+        return res.status(HttpStatus.OK).json(user);
+    }
+
     @Post()
     @UsePipes(new ValidationPipe())
     public async createUser(@Response() res, @Body() createUserDto: CreateUserDto) {
