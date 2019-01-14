@@ -49,6 +49,7 @@ export class UsersService implements IUsersService {
         return {
             ...neoUser,
             ...user,
+            neoId: neoUser.id,
             userCityEvents,
         };
     }

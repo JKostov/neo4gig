@@ -66,8 +66,8 @@ class Feed extends Component {
 
           <Button
             basic
-            content="user2@test.com add/remove user-205"
-            onClick={() => changeFollowAction(feed.id, 210, 205)}
+            content="add/remove user-205"
+            onClick={() => changeFollowAction(feed.id, feed.neoId, 205)}
           />
           <FollowModal ref={this.modalRef} title={modalTitle} users={modalUsers} />
         </Segment>
