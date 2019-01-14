@@ -119,14 +119,16 @@ export abstract class AbstractNeoRepository {
             return null;
         }
 
-        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${side}`);
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName, property } = relationship;
+
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
             `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(m:${entity2name})` +
             `WHERE id(n) = ${id1} RETURN m`,
         );
 
-        instance[property] = this.createObjectsFromRecord(result);
+        instance[property] = this.createObjectsFromRecord(result, relationship.className);
 
         return instance;
     }
@@ -138,14 +140,17 @@ export abstract class AbstractNeoRepository {
         }
 
         const queryString = this.convertQueryToQueryString(query2);
-        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${side}`);
+
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName, property } = relationship;
+
         const result = await this.neo4jService.query(
             `MATCH (m:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
             `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(n:${entity2name})` +
             `WHERE id(m) = ${id1} AND ${queryString} RETURN n`,
         );
 
-        instance[property] = this.createObjectsFromRecord(result);
+        instance[property] = this.createObjectsFromRecord(result, relationship.className);
 
         return instance;
     }
@@ -175,10 +180,10 @@ export abstract class AbstractNeoRepository {
         return this.createObject(record);
     }
 
-    private createObjectsFromRecord(records) {
+    private createObjectsFromRecord(records, className = null) {
         const objects = [];
         records.forEach(record => {
-            const object = this.createObject(record);
+            const object = this.createObject(record, className);
             if (object !== null) {
                 objects.push(object);
             }
@@ -190,13 +195,19 @@ export abstract class AbstractNeoRepository {
         return objects;
     }
 
-    private createObject(record) {
+    private createObject(record, className = null) {
         if (record === undefined) {
             return null;
         }
+
+        let classConstructor = this.classEntity;
+        if (className) {
+            classConstructor = className;
+        }
+
         const id = parseInt(record.get(0).identity, 10);
         const props = record.get(0).properties;
-        return new this.classEntity({ ...props, id });
+        return new classConstructor({ ...props, id });
     }
 
     private createStringFromObject(query: object): string {

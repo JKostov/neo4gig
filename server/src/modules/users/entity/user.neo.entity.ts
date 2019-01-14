@@ -9,6 +9,7 @@ export class User extends AbstractNeoEntity {
         'User->': {
             relationShipName: 'FOLLOWS',
             property: 'following',
+            className: User,
         },
         'User<-': {
             relationShipName: 'FOLLOWS',
@@ -17,10 +18,12 @@ export class User extends AbstractNeoEntity {
         'Genre->': {
             relationShipName: 'INTERESTED_INTO',
             property: 'genres',
+            className: Genre,
         },
         'Event->': {
             relationShipName: 'ATTENDS',
             property: 'events',
+            className: Event,
         },
     };
 
