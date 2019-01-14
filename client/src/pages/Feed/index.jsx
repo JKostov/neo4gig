@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Profile from '../../components/Profile';
-import { getFeed } from '../../thunks/feed';
+import { getFeed, changeFollow } from '../../thunks/feed';
 import EventList from '../../components/EventList';
 import { Segment, SubHeader } from '../../components/elements';
 import GenreList from '../../components/GenreList';
@@ -39,7 +39,8 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed } = this.props;
+    const { feed, changeFollowAction } = this.props;
+    console.log(feed);
     const { modalTitle, modalUsers } = this.state;
     if (!feed) {
       return null;
@@ -61,6 +62,12 @@ class Feed extends Component {
             basic
             content={`Following: ${feed.following.length}`}
             onClick={() => this.openModal(feed.following, 'Following')}
+          />
+
+          <Button
+            basic
+            content="add/remove user-205"
+            onClick={() => changeFollowAction(feed.id, feed.neoId, 205)}
           />
           <FollowModal ref={this.modalRef} title={modalTitle} users={modalUsers} />
         </Segment>
@@ -96,6 +103,7 @@ const mapStateToProps = ({ auth, feed }) => (
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getFeedAction: getFeed,
+    changeFollowAction: changeFollow,
   },
   dispatch,
 );

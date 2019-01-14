@@ -6,13 +6,14 @@ import { CreateUserPgDto } from './dto/createUser.pg.dto';
 import { User } from './entity/user.entity';
 import { User as NeoUser } from './entity/user.neo.entity';
 import { IUsersService } from './interfaces/users-service.interface';
-import {CreateUserNeoDto} from './dto/createUser.neo.dto';
-import {CreateUserDto} from './dto/createUser.dto';
-import {Event} from '../events/entity/event.neo.entity';
-import {EventsNeoService} from '../events/events.neo.service';
-import {IEventsNeoService} from '../events/interfaces/events-service.neo.interface';
-import {IUsersNeoService} from './interfaces/users-service.neo.interface';
-import {IGenresNeoService} from '../genres/interfaces/genres-service.neo.interface';
+import { CreateUserNeoDto } from './dto/createUser.neo.dto';
+import { CreateUserDto } from './dto/createUser.dto';
+import { Event } from '../events/entity/event.neo.entity';
+import { EventsNeoService } from '../events/events.neo.service';
+import { IEventsNeoService } from '../events/interfaces/events-service.neo.interface';
+import { IUsersNeoService } from './interfaces/users-service.neo.interface';
+import { IGenresNeoService } from '../genres/interfaces/genres-service.neo.interface';
+import { Genre } from '../genres/entity/genre.neo.entity';
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -48,11 +49,12 @@ export class UsersService implements IUsersService {
         return {
             ...neoUser,
             ...user,
+            neoId: neoUser.id,
             userCityEvents,
         };
     }
 
-    async updateFollow(ids: any): Promise<void | HttpException> {
+    async updateFollow(ids: any): Promise<NeoUser | HttpException> {
         if (!ids.id1 || !ids.id2) {
             return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
         }
@@ -61,12 +63,12 @@ export class UsersService implements IUsersService {
         const user1 = await this.usersNeoService.findById(id1.toString());
         const user2 = await this.usersNeoService.findById(id2.toString());
 
-        await this.usersNeoService.checkForFollowRelationship(id1, id2)
+        return await this.usersNeoService.checkForFollowRelationship(id1, id2)
             ? await this.usersNeoService.unfollowUser(user1, user2)
             : await this.usersNeoService.followUser(user1, user2);
     }
 
-    async updateInterest(ids: any): Promise<void | HttpException> {
+    async updateInterest(ids: any): Promise<Genre | HttpException> {
         if (!ids.id1 || !ids.id2) {
             return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
         }
@@ -76,12 +78,12 @@ export class UsersService implements IUsersService {
         const user1 = await this.usersNeoService.findById(id1.toString());
         const genre = await this.genresNeoService.findById(id2.toString());
 
-        await this.usersNeoService.checkForInterestsRelationship(id1, id2)
+        return await this.usersNeoService.checkForInterestsRelationship(id1, id2)
             ? await this.usersNeoService.unfollowGenreById(user1, genre)
             : await this.usersNeoService.followGenreById(user1, genre);
     }
 
-    async updateAttendance(ids: any): Promise<void | HttpException> {
+    async updateAttendance(ids: any): Promise<Event | HttpException> {
         if (!ids.id1 || !ids.id2) {
             return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
         }
@@ -91,7 +93,7 @@ export class UsersService implements IUsersService {
         const user1 = await this.usersNeoService.findById(id1.toString());
         const event = await this.eventsNeoService.findById(id2.toString());
 
-        await this.usersNeoService.checkForAttendanceRelationship(id1, id2)
+        return await this.usersNeoService.checkForAttendanceRelationship(id1, id2)
             ? await this.usersNeoService.unattendEvent(user1, event)
             : await this.usersNeoService.attendEvent(user1, event);
     }

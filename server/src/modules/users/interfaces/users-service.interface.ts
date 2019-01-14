@@ -1,7 +1,10 @@
 import { User } from '../entity/user.entity';
+import { User as NeoUser } from '../entity/user.neo.entity';
 import { CreateUserPgDto } from '../dto/createUser.pg.dto';
 import { DeleteResult } from 'typeorm';
-import {HttpException} from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
+import { Event } from '../../events/entity/event.neo.entity';
+import { Genre } from '../../genres/entity/genre.neo.entity';
 
 export interface IUsersService {
     findAll(): Promise<User[]>;
@@ -11,7 +14,7 @@ export interface IUsersService {
     create(createUserDto: CreateUserPgDto): Promise<User>;
     update(id: string, newValue: CreateUserPgDto): Promise<User | null>;
     delete(id: string): Promise<DeleteResult>;
-    updateFollow(ids: any): Promise<void | HttpException>;
-    updateInterest(ids: any): Promise<void | HttpException>;
-    updateAttendance(ids: any): Promise<void | HttpException>;
+    updateFollow(ids: any): Promise<NeoUser | HttpException>;
+    updateInterest(ids: any): Promise<Genre | HttpException>;
+    updateAttendance(ids: any): Promise<Event | HttpException>;
 }

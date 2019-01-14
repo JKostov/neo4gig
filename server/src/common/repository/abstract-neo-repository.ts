@@ -105,61 +105,51 @@ export abstract class AbstractNeoRepository {
     }
 
     public async createRelationship(id1: number, id2: number, entity2name: string): Promise<object> {
-        const { relationShipName } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName } = relationship;
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className}),(m:${entity2name}) ` +
-             `WHERE id(n) = ${id1} AND id(m) = ${id2} CREATE (n)-[r:${relationShipName}]->(m) RETURN n, m, r LIMIT 1`,
+             `WHERE id(n) = ${id1} AND id(m) = ${id2} CREATE (n)-[r:${relationShipName}]->(m) RETURN m LIMIT 1`,
         );
 
-        return this.createObjectsFromRecord(result);
+        return this.createObjectFromRecord(result, relationship.className);
     }
 
     public async createRelationshipWithQuery(id1: number, query2: object, entity2name: string): Promise<object> {
-        const { relationShipName } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName } = relationship;
         const queryString = this.createStringFromObject(query2);
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className}),(m:${entity2name} ${queryString})` +
-            `WHERE id(n) = ${id1} CREATE (n)-[r:${relationShipName}]->(m) RETURN n, m, r LIMIT 1`,
+            `WHERE id(n) = ${id1} CREATE (n)-[r:${relationShipName}]->(m) RETURN m`,
         );
 
-        return this.createObjectsFromRecord(result);
+        return this.createObjectsFromRecord(result, relationship.className);
     }
 
     public async deleteRelationship(id1: number, id2: number, entity2name: string): Promise<object> {
-        const instance = await this.findById(id1);
-        if (instance === null) {
-            return null;
-        }
-
-        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName } = relationship;
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className})-` +
             `[r:${relationShipName}]->(m:${entity2name})` +
-            `WHERE id(n) = ${id1} AND id(m) = ${id2} DELETE r`,
+            `WHERE id(n) = ${id1} AND id(m) = ${id2} DELETE r RETURN m`,
         );
 
-        instance[property] = this.createObjectsFromRecord(result);
-
-        return instance;
+        return this.createObjectFromRecord(result, relationship.className);
     }
 
     public async deleteRelationshipWithQuery(id1: number, query2: object, entity2name: string): Promise<object> {
-        const instance = await this.findById(id1);
-        if (instance === null) {
-            return null;
-        }
-
         const queryString = this.convertQueryToQueryString(query2);
-        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const relationship = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName } = relationship;
         const result = await this.neo4jService.query(
             `MATCH (m:${this.className})-` +
             `[r:${relationShipName}]->(n:${entity2name})` +
-            `WHERE id(m) = ${id1} AND ${queryString} DELETE r`,
+            `WHERE id(m) = ${id1} AND ${queryString} DELETE r RETURN n`,
         );
 
-        instance[property] = this.createObjectsFromRecord(result);
-
-        return instance;
+        return this.createObjectsFromRecord(result, relationship.className);
     }
 
     public async checkForRelationShip(id1: number, id2: number, entity2name: string): Promise<boolean> {
@@ -234,10 +224,10 @@ export abstract class AbstractNeoRepository {
         return string;
     }
 
-    private createObjectFromRecord(records) {
+    private createObjectFromRecord(records, className = null) {
         const record = records[0];
 
-        return this.createObject(record);
+        return this.createObject(record, className);
     }
 
     private createObjectsFromRecord(records, className = null) {

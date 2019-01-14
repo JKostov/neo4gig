@@ -55,20 +55,20 @@ export class UsersController {
 
     @Put('/:id/follow-change')
     public async updateUserFollows(@Param() param, @Response() res, @Body() body) {
-        await this.usersService.updateFollow(body);
-        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+        const user = await this.usersService.updateFollow(body);
+        return res.status(HttpStatus.OK).json(user);
     }
 
     @Put('/:id/interest-change')
     public async updateUserInterests(@Param() param, @Response() res, @Body() body) {
-        await this.usersService.updateInterest(body);
-        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+        const genre = await this.usersService.updateInterest(body);
+        return res.status(HttpStatus.OK).json(genre);
     }
 
     @Put('/:id/attendance-change')
     public async updateUserAttendings(@Param() param, @Response() res, @Body() body) {
-        await this.usersService.updateAttendance(body);
-        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+        const event = await this.usersService.updateAttendance(body);
+        return res.status(HttpStatus.OK).json(event);
     }
 
     @Delete('/:id')
