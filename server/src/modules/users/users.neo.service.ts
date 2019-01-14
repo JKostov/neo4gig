@@ -6,6 +6,7 @@ import { IUsersNeoService } from './interfaces/users-service.neo.interface';
 import { Genre } from '../genres/entity/genre.neo.entity';
 import { Event } from '../events/entity/event.neo.entity';
 import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
+import { QueryWith } from '../../common/entity/neo-query-with';
 import * as moment from 'moment';
 
 @Injectable()
@@ -113,5 +114,13 @@ export class UsersNeoService implements IUsersNeoService {
             Genre.entityName, RelationshipSide.ToMe,
             { dateAndTime: `> ${moment().format()}` },
         );
+    }
+
+    async findUserWithFollowersAndFollowing(user: User): Promise<User> {
+        const { id } = user;
+        return await this.usersNeoRepository.findByIdWith(id, [
+            new QueryWith(User.entityName, RelationshipSide.FromMe),
+            new QueryWith(User.entityName, RelationshipSide.ToMe),
+        ]);
     }
 }

@@ -1,4 +1,4 @@
 
 export abstract class AbstractNeoEntity {
-    private readonly relationships: object = null;
+    private static readonly relationships: object = null;
 }
