@@ -7,12 +7,14 @@ import { UsersNeoRepositoryProvider} from './repository/users-repository.neo';
 import { UsersNeoService } from './users.neo.service';
 import { Neo4jModule } from '../neo4j/neo4j.module';
 import {EventsModule} from '../events/events.module';
+import {GenresModule} from '../genres/genres.module';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([User]),
         Neo4jModule,
         EventsModule,
+        GenresModule,
     ],
     controllers: [UsersController],
     providers: [

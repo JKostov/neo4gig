@@ -8,10 +8,11 @@ import { User as NeoUser } from './entity/user.neo.entity';
 import { IUsersService } from './interfaces/users-service.interface';
 import {CreateUserNeoDto} from './dto/createUser.neo.dto';
 import {CreateUserDto} from './dto/createUser.dto';
-import {UsersNeoService} from './users.neo.service';
 import {Event} from '../events/entity/event.neo.entity';
 import {EventsNeoService} from '../events/events.neo.service';
 import {IEventsNeoService} from '../events/interfaces/events-service.neo.interface';
+import {IUsersNeoService} from './interfaces/users-service.neo.interface';
+import {IGenresNeoService} from '../genres/interfaces/genres-service.neo.interface';
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -19,9 +20,11 @@ export class UsersService implements IUsersService {
         @InjectRepository(User)
         private readonly usersRepository: Repository<User>,
         @Inject('UsersNeoService')
-        private readonly usersNeoService: UsersNeoService,
+        private readonly usersNeoService: IUsersNeoService,
         @Inject('EventsNeoService')
         private readonly eventsNeoService: IEventsNeoService,
+        @Inject('GenresNeoService')
+        private readonly genresNeoService: IGenresNeoService,
     ) {}
 
     async findAll(): Promise<User[]> {
@@ -47,6 +50,50 @@ export class UsersService implements IUsersService {
             ...user,
             userCityEvents,
         };
+    }
+
+    async updateFollow(ids: any): Promise<void | HttpException> {
+        if (!ids.id1 || !ids.id2) {
+            return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
+        }
+        const { id1, id2 } = ids;
+
+        const user1 = await this.usersNeoService.findById(id1.toString());
+        const user2 = await this.usersNeoService.findById(id2.toString());
+
+        await this.usersNeoService.checkForFollowRelationship(id1, id2)
+            ? await this.usersNeoService.unfollowUser(user1, user2)
+            : await this.usersNeoService.followUser(user1, user2);
+    }
+
+    async updateInterest(ids: any): Promise<void | HttpException> {
+        if (!ids.id1 || !ids.id2) {
+            return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
+        }
+
+        const { id1, id2 } = ids;
+
+        const user1 = await this.usersNeoService.findById(id1.toString());
+        const genre = await this.genresNeoService.findById(id2.toString());
+
+        await this.usersNeoService.checkForInterestsRelationship(id1, id2)
+            ? await this.usersNeoService.unfollowGenreById(user1, genre)
+            : await this.usersNeoService.followGenreById(user1, genre);
+    }
+
+    async updateAttendance(ids: any): Promise<void | HttpException> {
+        if (!ids.id1 || !ids.id2) {
+            return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
+        }
+
+        const { id1, id2 } = ids;
+
+        const user1 = await this.usersNeoService.findById(id1.toString());
+        const event = await this.eventsNeoService.findById(id2.toString());
+
+        await this.usersNeoService.checkForAttendanceRelationship(id1, id2)
+            ? await this.usersNeoService.unattendEvent(user1, event)
+            : await this.usersNeoService.attendEvent(user1, event);
     }
 
     async create(createUserDto: CreateUserDto): Promise<User> {

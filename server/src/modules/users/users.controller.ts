@@ -53,6 +53,24 @@ export class UsersController {
         return res.status(HttpStatus.OK).json(user);
     }
 
+    @Put('/:id/follow-change')
+    public async updateUserFollows(@Param() param, @Response() res, @Body() body) {
+        await this.usersService.updateFollow(body);
+        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+    }
+
+    @Put('/:id/interest-change')
+    public async updateUserInterests(@Param() param, @Response() res, @Body() body) {
+        await this.usersService.updateInterest(body);
+        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+    }
+
+    @Put('/:id/attendance-change')
+    public async updateUserAttendings(@Param() param, @Response() res, @Body() body) {
+        await this.usersService.updateAttendance(body);
+        return res.status(HttpStatus.OK).json({id: param.id, ...body});
+    }
+
     @Delete('/:id')
     public async deleteUser(@Param() param, @Response() res) {
 

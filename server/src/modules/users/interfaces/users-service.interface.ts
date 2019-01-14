@@ -1,6 +1,7 @@
 import { User } from '../entity/user.entity';
 import { CreateUserPgDto } from '../dto/createUser.pg.dto';
 import { DeleteResult } from 'typeorm';
+import {HttpException} from '@nestjs/common';
 
 export interface IUsersService {
     findAll(): Promise<User[]>;
@@ -10,4 +11,7 @@ export interface IUsersService {
     create(createUserDto: CreateUserPgDto): Promise<User>;
     update(id: string, newValue: CreateUserPgDto): Promise<User | null>;
     delete(id: string): Promise<DeleteResult>;
+    updateFollow(ids: any): Promise<void | HttpException>;
+    updateInterest(ids: any): Promise<void | HttpException>;
+    updateAttendance(ids: any): Promise<void | HttpException>;
 }

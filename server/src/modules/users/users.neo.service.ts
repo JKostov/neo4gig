@@ -129,4 +129,16 @@ export class UsersNeoService implements IUsersNeoService {
             new QueryWith(Genre.entityName, RelationshipSide.FromMe),
         ]);
     }
+
+    async checkForFollowRelationship(id1: number, id2: number): Promise<boolean> {
+        return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'User');
+    }
+
+    async checkForAttendanceRelationship(id1: number, id2: number): Promise<boolean> {
+        return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'Event');
+    }
+
+    async checkForInterestsRelationship(id1: number, id2: number): Promise<boolean> {
+        return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'Genre');
+    }
 }
