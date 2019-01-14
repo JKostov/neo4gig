@@ -38,15 +38,9 @@ export class UsersService implements IUsersService {
 
     async getUserFeed(id: string): Promise<any> {
         const user: User = await this.findById(id);
-        const neoUser: NeoUser = await this.usersNeoService.findOne({ name: user.name });
-        const { genres } = await this.usersNeoService.findUserWithFollowingGenres(neoUser);
-        const { followers } = await this.usersNeoService.findUserWithFollowers(neoUser);
-        const { following } = await this.usersNeoService.findUserWithFollowing(neoUser);
+        const { email } = user;
+        const neoUser: NeoUser = await this.usersNeoService.findUserWithFollowersFollowingAndGenres({ email });
         const userCityEvents: Event[] = await this.eventsNeoService.find({ city: neoUser.city });
-
-        neoUser.genres = genres;
-        neoUser.following = following;
-        neoUser.followers = followers;
 
         return {
             ...neoUser,

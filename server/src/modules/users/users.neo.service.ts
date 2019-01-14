@@ -1,12 +1,11 @@
-
-import {Injectable, HttpException, HttpStatus, Inject} from '@nestjs/common';
-import { CreateUserNeoDto } from './dto/createUser.neo.dto';
-import { User } from './entity/user.neo.entity';
-import { IUsersNeoService } from './interfaces/users-service.neo.interface';
-import { Genre } from '../genres/entity/genre.neo.entity';
-import { Event } from '../events/entity/event.neo.entity';
-import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
-import { QueryWith } from '../../common/entity/neo-query-with';
+import {Inject, Injectable} from '@nestjs/common';
+import {CreateUserNeoDto} from './dto/createUser.neo.dto';
+import {User} from './entity/user.neo.entity';
+import {IUsersNeoService} from './interfaces/users-service.neo.interface';
+import {Genre} from '../genres/entity/genre.neo.entity';
+import {Event} from '../events/entity/event.neo.entity';
+import {RelationshipSide} from '../../common/enum/neo-relationship-side.enum';
+import {QueryWith} from '../../common/entity/neo-query-with';
 import * as moment from 'moment';
 
 @Injectable()
@@ -116,11 +115,18 @@ export class UsersNeoService implements IUsersNeoService {
         );
     }
 
-    async findUserWithFollowersAndFollowing(user: User): Promise<User> {
-        const { id } = user;
+    async findUserWithFollowersAndFollowing(id: number): Promise<User> {
         return await this.usersNeoRepository.findByIdWith(id, [
             new QueryWith(User.entityName, RelationshipSide.FromMe),
             new QueryWith(User.entityName, RelationshipSide.ToMe),
+        ]);
+    }
+
+    async findUserWithFollowersFollowingAndGenres(query: object): Promise<User> {
+        return await this.usersNeoRepository.findOneWith(query, [
+            new QueryWith(User.entityName, RelationshipSide.FromMe),
+            new QueryWith(User.entityName, RelationshipSide.ToMe),
+            new QueryWith(Genre.entityName, RelationshipSide.FromMe),
         ]);
     }
 }
