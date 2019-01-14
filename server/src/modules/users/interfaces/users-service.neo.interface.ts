@@ -12,12 +12,12 @@ export interface IUsersNeoService {
     update(id: string, newValue: CreateUserNeoDto): Promise<User | null>;
     findWithOperator(query: object): Promise<User[]>;
     followUser(currentUser: User, userToFollow: User): Promise<User>;
-    followGenreById(currentUser: User, genreToFollow: Genre): Promise<User>;
-    followGenreByName(currentUser: User, genreToFollow: Genre): Promise<User>;
-    attendEvent(currentUser: User, eventToAttend: Event): Promise<User>;
+    followGenreById(currentUser: User, genreToFollow: Genre): Promise<Genre>;
+    followGenreByName(currentUser: User, genreToFollow: Genre): Promise<Genre>;
+    attendEvent(currentUser: User, eventToAttend: Event): Promise<Event>;
     unfollowUser(currentUser: User, userToUnfollow: User): Promise<User>;
-    unfollowGenreById(currentUser: User, genreToUnfollow: Genre): Promise<User>;
-    unattendEvent(currentUser: User, eventToUnattend: Event): Promise<User>;
+    unfollowGenreById(currentUser: User, genreToUnfollow: Genre): Promise<Genre>;
+    unattendEvent(currentUser: User, eventToUnattend: Event): Promise<Event>;
     findUserWithFollowing(user: User): Promise<User>;
     findUserWithFollowers(user: User): Promise<User>;
     findUserWithFollowingGenres(user: User): Promise<User>;

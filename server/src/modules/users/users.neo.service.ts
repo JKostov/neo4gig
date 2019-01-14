@@ -49,21 +49,21 @@ export class UsersNeoService implements IUsersNeoService {
         return await this.usersNeoRepository.createRelationship(currentUserId, userToFollowId, User.entityName);
     }
 
-    async followGenreById(currentUser: User, genreToFollow: Genre): Promise<User> {
+    async followGenreById(currentUser: User, genreToFollow: Genre): Promise<Genre> {
         const currentUserId = currentUser.id;
         const genreToFollowId = genreToFollow.id;
 
         return await this.usersNeoRepository.createRelationship(currentUserId, genreToFollowId, Genre.entityName);
     }
 
-    async followGenreByName(currentUser: User, genreToFollow: Genre): Promise<User> {
+    async followGenreByName(currentUser: User, genreToFollow: Genre): Promise<Genre> {
         const currentUserId = currentUser.id;
         const { name } = genreToFollow;
 
         return await this.usersNeoRepository.createRelationshipWithQuery(currentUserId, { name }, Genre.entityName);
     }
 
-    async attendEvent(currentUser: User, eventToAttend: Event): Promise<User> {
+    async attendEvent(currentUser: User, eventToAttend: Event): Promise<Event> {
         const currentUserId = currentUser.id;
         const eventToAttendId = eventToAttend.id;
 
@@ -77,14 +77,14 @@ export class UsersNeoService implements IUsersNeoService {
         return await this.usersNeoRepository.deleteRelationship(currentUserId, userToUnfollowId, User.entityName);
     }
 
-    async unfollowGenreById(currentUser: User, genreToUnfollow: Genre): Promise<User> {
+    async unfollowGenreById(currentUser: User, genreToUnfollow: Genre): Promise<Genre> {
         const currentUserId = currentUser.id;
         const genreToUnfollowId = genreToUnfollow.id;
 
         return await this.usersNeoRepository.deleteRelationship(currentUserId, genreToUnfollowId, Genre.entityName);
     }
 
-    async unattendEvent(currentUser: User, eventToUnattend: Event): Promise<User> {
+    async unattendEvent(currentUser: User, eventToUnattend: Event): Promise<Event> {
         const currentUserId = currentUser.id;
         const eventToUnattendId = eventToUnattend.id;
 
