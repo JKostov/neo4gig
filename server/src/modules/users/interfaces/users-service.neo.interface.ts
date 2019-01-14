@@ -22,5 +22,6 @@ export interface IUsersNeoService {
     findUserWithFollowers(user: User): Promise<User>;
     findUserWithFollowingGenres(user: User): Promise<User>;
     findUserWithAttendingFutureEvents(user: User): Promise<User>;
-    findUserWithFollowersAndFollowing(user: User): Promise<User>;
+    findUserWithFollowersAndFollowing(id: number): Promise<User>;
+    findUserWithFollowersFollowingAndGenres(query: object): Promise<User>;
 }
