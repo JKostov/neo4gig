@@ -79,7 +79,7 @@ export class UsersController {
         return res.status(HttpStatus.OK).json(user);
     }
 
-    @Post('/:id/events')
+    @Post('/:neoId/events')
     @UsePipes(new ValidationPipe())
     public async createEvent(@Param() param, @Response() res, @Body() createEventNeoDto: CreateEventNeoDto) {
         const user = await this.usersService.createEvent(param.neoId, createEventNeoDto);
