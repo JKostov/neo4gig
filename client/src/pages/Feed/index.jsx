@@ -85,6 +85,10 @@ class Feed extends Component {
           />
         </Segment>
         <Segment>
+          <SubHeader header="Upcoming events i'm attending" />
+          <EventList events={feed.events} />
+        </Segment>
+        <Segment>
           <SubHeader header="Upcoming events in your city" />
           <EventList events={feed.userCityEvents} />
         </Segment>
