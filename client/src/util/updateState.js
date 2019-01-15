@@ -9,6 +9,7 @@ export function updateFeedByProp(feed, property, value) {
       }
     }
     arr.push(value);
+    feed[property] = arr;
     return feed;
   }
 }

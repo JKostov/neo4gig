@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Profile from '../../components/Profile';
-import { getFeed, changeFollow } from '../../thunks/feed';
+import { getFeed, changeFollow, createEvent } from '../../thunks/feed';
 import EventList from '../../components/EventList';
 import { Segment, SubHeader } from '../../components/elements';
 import GenreList from '../../components/GenreList';
@@ -26,9 +26,9 @@ class Feed extends Component {
   }
 
   componentDidMount() {
-    const { getFeedAction, id } = this.props;
+    const { getFeedAction, user } = this.props;
 
-    getFeedAction(id);
+    getFeedAction(user.get('id'));
   }
 
   openModal(modalUsers, modalTitle) {
@@ -39,7 +39,7 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed, changeFollowAction } = this.props;
+    const { feed, changeFollowAction, createEventAction } = this.props;
     const { modalTitle, modalUsers } = this.state;
     if (!feed) {
       return null;
@@ -49,20 +49,21 @@ class Feed extends Component {
       <Fragment>
         <Segment>
           <SubHeader header="Profile" />
-          <Profile user={feed} />
+          <Profile user={feed} createEventAction={createEventAction} />
           <Button
-            disabled={!feed.followers.length}
+            disabled={feed.followers ? !feed.followers.length : true}
             basic
-            content={`Followers: ${feed.followers.length}`}
+            content={`Followers: ${feed.followers ? feed.followers.length : 0}`}
             onClick={() => this.openModal(feed.followers, 'Followers')}
           />
           <Button
-            disabled={!feed.following.length}
+            disabled={feed.following ? !feed.following.length : true}
             basic
-            content={`Following: ${feed.following.length}`}
+            content={`Following: ${feed.following ? feed.following.length : 0}`}
             onClick={() => this.openModal(feed.following, 'Following')}
           />
           <FollowModal
+            currentUser={feed}
             changeFollowAction={changeFollowAction}
             ref={this.modalRef}
             title={modalTitle}
@@ -87,14 +88,15 @@ Feed.defaultProps = {
 
 Feed.propTypes = {
   feed: PropTypes.shape({}),
-  id: PropTypes.string.isRequired,
+  user: PropTypes.shape({}).isRequired,
   getFeedAction: PropTypes.func.isRequired,
   changeFollowAction: PropTypes.func.isRequired,
+  createEventAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ auth, feed }) => (
   {
-    id: auth.get('user').get('user').get('id'),
+    user: auth.get('user').get('user'),
     feed: feed.get('feed'),
   }
 );
@@ -103,6 +105,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getFeedAction: getFeed,
     changeFollowAction: changeFollow,
+    createEventAction: createEvent,
   },
   dispatch,
 );
