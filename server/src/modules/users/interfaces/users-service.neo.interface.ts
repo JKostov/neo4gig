@@ -31,4 +31,6 @@ export interface IUsersNeoService {
     findUserWithLikedBands(user: User): Promise<User>;
     findUserWithHisBand(user: User): Promise<User>;
     likeBand(currentUser: User, bandToLike: Band): Promise<Band>;
+    getSuggestedUsersByGenre(genreId: number, userId: number, limit: number): Promise<User[]>;
+    getSuggestedUsersByBand(bandId: number, userId: number, limit: number): Promise<User[]>;
 }

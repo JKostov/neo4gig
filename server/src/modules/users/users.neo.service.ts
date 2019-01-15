@@ -159,4 +159,12 @@ export class UsersNeoService implements IUsersNeoService {
 
         return await this.usersNeoRepository.createRelationship(currentUserId, bandToLikeId, Band.entityName);
     }
+
+    async getSuggestedUsersByGenre(genreId: number, userId: number, limit: number = 5): Promise<User[]> {
+        return await this.usersNeoRepository.findSuggestedUsersByGenre(genreId, userId, limit);
+    }
+
+    async getSuggestedUsersByBand(bandId: number, userId: number, limit: number = 5): Promise<User[]> {
+        return await this.usersNeoRepository.findSuggestedUsersByBand(bandId, userId, limit);
+    }
 }

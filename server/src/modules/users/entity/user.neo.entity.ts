@@ -79,7 +79,7 @@ export class User extends AbstractNeoEntity {
 
     band: Band;
 
-    static associate(entityName): object {
+    static associate(entityName): { relationShipName, property, className? } {
         if (User.relationships === null) {
             return null;
         }

@@ -37,7 +37,7 @@ export class Band extends AbstractNeoEntity {
 
     likes: User[];
 
-    static associate(entityName): object {
+    static associate(entityName): { relationShipName, property, className? } {
         if (Band.relationships === null) {
             return null;
         }

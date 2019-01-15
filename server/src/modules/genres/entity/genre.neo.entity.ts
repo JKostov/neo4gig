@@ -37,4 +37,12 @@ export class Genre extends AbstractNeoEntity {
     userFollowers: User[];
 
     events: Event[];
+
+    static associate(entityName): { relationShipName, property, className? } {
+        if (Genre.relationships === null) {
+            return null;
+        }
+
+        return Genre.relationships[entityName];
+    }
 }

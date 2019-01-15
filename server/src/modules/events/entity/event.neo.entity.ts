@@ -39,7 +39,7 @@ export class Event extends AbstractNeoEntity {
 
     genres: Genre[];
 
-    static associate(entityName): object {
+    static associate(entityName): { relationShipName, property, className? } {
         if (Event.relationships === null) {
             return null;
         }

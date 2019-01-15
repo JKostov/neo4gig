@@ -4,9 +4,9 @@ import * as stringifyObject from 'stringify-object';
 import { QueryWith } from '../entity/neo-query-with';
 
 export abstract class AbstractNeoRepository {
-    private readonly className: string;
-    private readonly classEntity;
-    private readonly  neo4jService: Neo4jService;
+    protected readonly className: string;
+    protected readonly classEntity;
+    protected readonly  neo4jService: Neo4jService;
 
     protected constructor(classEntity, neo4jService: Neo4jService) {
         this.classEntity = classEntity;
@@ -205,7 +205,7 @@ export abstract class AbstractNeoRepository {
         return instance;
     }
 
-    private convertPropsToString(object) {
+    protected convertPropsToString(object) {
         const instance = new this.classEntity(object);
         let string = '';
         instance.keys().forEach(key => {
@@ -215,7 +215,7 @@ export abstract class AbstractNeoRepository {
         return string;
     }
 
-    private convertQueryToQueryString(object) {
+    protected convertQueryToQueryString(object) {
         let string = '';
         Object.keys(object).forEach(key => {
             string += `n.${key} ${object[key]} `;
@@ -224,13 +224,13 @@ export abstract class AbstractNeoRepository {
         return string;
     }
 
-    private createObjectFromRecord(records, className = null) {
+    protected createObjectFromRecord(records, className = null) {
         const record = records[0];
 
         return this.createObject(record, className);
     }
 
-    private createObjectsFromRecord(records, className = null) {
+    protected createObjectsFromRecord(records, className = null) {
         const objects = [];
         records.forEach(record => {
             const object = this.createObject(record, className);
@@ -245,7 +245,7 @@ export abstract class AbstractNeoRepository {
         return objects;
     }
 
-    private createObject(record, className = null) {
+    protected createObject(record, className = null) {
         if (record === undefined) {
             return null;
         }
@@ -260,7 +260,7 @@ export abstract class AbstractNeoRepository {
         return new classConstructor({ ...props, id });
     }
 
-    private createStringFromObject(query: object): string {
+    protected createStringFromObject(query: object): string {
         if (query === undefined || query === null) {
             return '';
         }
