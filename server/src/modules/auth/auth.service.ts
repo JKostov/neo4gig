@@ -64,6 +64,7 @@ export class AuthService implements IAuthService {
          const user = {
              ...pgUser,
              ...neoAttributes,
+             neoId: id,
          };
 
          const payload = {

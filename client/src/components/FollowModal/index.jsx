@@ -12,10 +12,14 @@ class FollowModal extends Component {
   }
 
   getModalActionsAndChildren() {
-    const { users } = this.props;
+    const { users, changeFollowAction, currentUser } = this.props;
     return {
       children: (
-        <UserList users={users} />
+        <UserList
+          currentUser={currentUser}
+          changeFollowAction={changeFollowAction}
+          users={users}
+        />
       ),
     };
   }
@@ -40,6 +44,8 @@ class FollowModal extends Component {
 }
 
 FollowModal.propTypes = {
+  currentUser: PropTypes.shape({}).isRequired,
+  changeFollowAction: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
