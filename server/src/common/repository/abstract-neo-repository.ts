@@ -71,13 +71,37 @@ export abstract class AbstractNeoRepository {
         return instance;
     }
 
-    public async find(query: object, skip: number = 0, limit: number = null): Promise<object> {
+    public async find(query: object, skip: number = 0, limit: number = null): Promise<object[]> {
         const queryString = this.createStringFromObject(query);
         const records = await this.neo4jService.query(
             `MATCH (n:${this.className} ${queryString}) RETURN n SKIP ${skip} ${limit ? 'LIMIT ' + limit : ''}`,
         );
 
         return this.createObjectsFromRecord(records);
+    }
+
+    public async findWith(query: object, withArray: QueryWith[], skip: number = 0, limit: number = null): Promise<object[]> {
+        const objects = await this.find(query, skip, limit);
+        if (objects.length === null) {
+            return null;
+        }
+
+        for (const o of objects) {
+            for (const relationship of withArray) {
+                const { className, side } = relationship;
+                const relship = this.classEntity.associate(`${className}${side}`);
+                const { relationShipName, property } = relship;
+
+                const result = await this.neo4jService.query(
+                    `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
+                    `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}` +
+                    ` (m:${className}) WHERE id(n) = ${o['id']} RETURN m`);
+
+                o[property] = this.createObjectsFromRecord(result, relship.className);
+            }
+        }
+
+        return objects;
     }
 
     public async findWithOperator(query: object, skip: number = 0, limit: number = null): Promise<object> {

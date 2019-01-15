@@ -3,6 +3,8 @@ import { CreateBandNeoDto } from './dto/createBand.neo.dto';
 import { Band } from './entity/band.neo.entity';
 import { IBandsNeoService } from './interfaces/bands-service.neo.interface';
 import { User } from '../users/entity/user.neo.entity';
+import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
+import { QueryWith } from '../../common/entity/neo-query-with';
 
 @Injectable()
 export class BandsNeoService implements IBandsNeoService {
@@ -12,6 +14,12 @@ export class BandsNeoService implements IBandsNeoService {
 
     async findAll(): Promise<Band[]> {
         return await this.bandsNeoRepository.find();
+    }
+
+    async findAllWithUsers(): Promise<Band[]> {
+        return await this.bandsNeoRepository.findWith(null, [
+            new QueryWith(User.entityName, RelationshipSide.ToMe),
+        ]);
     }
 
     async findById(id: string): Promise<Band> {

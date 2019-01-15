@@ -23,7 +23,7 @@ export class EventsController {
 
     @Get()
     public async getEvents(@Response() res) {
-        const events = await this.eventsNeoService.findAll();
+        const events = await this.eventsNeoService.findAllWithUsers();
         return res.status(HttpStatus.OK).json(events);
     }
 

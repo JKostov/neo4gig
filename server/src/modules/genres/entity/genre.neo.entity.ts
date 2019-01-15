@@ -1,14 +1,14 @@
 import { CreateGenreNeoDto } from '../dto/createGenre.neo.dto';
 import { AbstractNeoEntity } from '../../../common/entity/abstract-neo-entity.';
 import { User } from '../../users/entity/user.neo.entity';
-import { Event } from '../../events/entity/event.neo.entity';
 
 export class Genre extends AbstractNeoEntity {
     static readonly entityName = 'Genre';
     static readonly relationships = {
         'User<-': {
             relationShipName: 'INTERESTED_INTO',
-            property: 'followers',
+            property: 'userFollowers',
+            className: User,
         },
         'Event<-': {
             relationShipName: 'BELONGS_TO',
@@ -38,7 +38,7 @@ export class Genre extends AbstractNeoEntity {
 
     events: Event[];
 
-    static associate(entityName): { relationShipName, property, className? } {
+    static associate(entityName): object {
         if (Genre.relationships === null) {
             return null;
         }

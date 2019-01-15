@@ -9,6 +9,7 @@ export class Event extends AbstractNeoEntity {
         'User<-': {
             relationShipName: 'ATTENDS',
             property: 'users',
+            className: User,
         },
         'Genre->': {
             relationShipName: 'BELONGS_TO',

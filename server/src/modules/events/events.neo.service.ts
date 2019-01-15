@@ -4,6 +4,8 @@ import { Event } from './entity/event.neo.entity';
 import { IEventsNeoService } from './interfaces/events-service.neo.interface';
 import { Genre } from '../genres/entity/genre.neo.entity';
 import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
+import { QueryWith } from '../../common/entity/neo-query-with';
+import { User } from '../users/entity/user.neo.entity';
 
 @Injectable()
 export class EventsNeoService implements IEventsNeoService {
@@ -13,6 +15,10 @@ export class EventsNeoService implements IEventsNeoService {
 
     async findAll(): Promise<Event[]> {
         return await this.eventsNeoRepository.find();
+    }
+
+    async findAllWithUsers(): Promise<Event[]> {
+        return await this.eventsNeoRepository.findAllWithUsers();
     }
 
     async findById(id: string): Promise<Event> {

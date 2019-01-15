@@ -4,6 +4,7 @@ import { Genre } from '../../genres/entity/genre.neo.entity';
 
 export interface IEventsNeoService {
     findAll(): Promise<Event[]>;
+    findAllWithUsers(): Promise<Event[]>;
     findById(id: string): Promise<Event>;
     findOne(query: object): Promise<Event>;
     find(query: object): Promise<Event[]>;

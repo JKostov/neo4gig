@@ -12,6 +12,7 @@ export class Band extends AbstractNeoEntity {
         'User<-': {
             relationShipName: 'LIKES',
             property: 'likes',
+            className: User,
         },
     };
 

@@ -23,7 +23,7 @@ export class GenresController {
 
     @Get()
     public async getGenres(@Response() res) {
-        const genres = await this.genresService.findAll();
+        const genres = await this.genresService.findAllWithUsers();
         return res.status(HttpStatus.OK).json(genres);
     }
 

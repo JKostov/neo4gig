@@ -6,6 +6,7 @@ import { Event } from '../events/entity/event.neo.entity';
 import { User } from '../users/entity/user.neo.entity';
 import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
 import * as moment from 'moment';
+import { QueryWith } from '../../common/entity/neo-query-with';
 
 @Injectable()
 export class GenresNeoService implements IGenresNeoService {
@@ -15,6 +16,14 @@ export class GenresNeoService implements IGenresNeoService {
 
     async findAll(): Promise<Genre[]> {
         return await this.genresNeoRepository.find();
+    }
+
+    async findWith(query, withQueries: QueryWith[], skip: number = 0, limit: number = null): Promise<Genre[]> {
+        return await this.genresNeoRepository.findWith(query, withQueries, skip, limit);
+    }
+
+    async findAllWithUsers(): Promise<Genre[]> {
+        return await this.genresNeoRepository.findAllWithUsers();
     }
 
     async findById(id: string): Promise<Genre> {
@@ -50,13 +59,5 @@ export class GenresNeoService implements IGenresNeoService {
     async findGenreWithInterestedUsers(genre: Genre): Promise<Genre> {
         const { id } = genre;
         return await this.genresNeoRepository.getRelationship(id, User.entityName, RelationshipSide.ToMe);
-    }
-
-    static associate(entityName): object {
-        if (Genre.relationships === null) {
-            return null;
-        }
-
-        return Genre.relationships[entityName];
     }
 }

@@ -23,7 +23,7 @@ export class BandsController {
 
     @Get()
     public async getBands(@Response() res) {
-        const bands = await this.bandsService.findAll();
+        const bands = await this.bandsService.findAllWithUsers();
         return res.status(HttpStatus.OK).json(bands);
     }
 

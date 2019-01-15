@@ -4,6 +4,7 @@ import { User } from '../../users/entity/user.neo.entity';
 
 export interface IBandsNeoService {
     findAll(): Promise<Band[]>;
+    findAllWithUsers(): Promise<Band[]>;
     findById(id: string): Promise<Band>;
     findOne(query: object): Promise<Band>;
     find(query: object): Promise<Band[]>;
