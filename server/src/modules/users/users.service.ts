@@ -158,4 +158,12 @@ export class UsersService implements IUsersService {
         const event = await this.eventsNeoService.create(createEventNeoDto);
         return await this.usersNeoService.attendEvent(user, event);
     }
+
+    async getSuggestedUsersByGenre(genreId: number, userId: number, limit: number = 5): Promise<NeoUser[]> {
+        return await this.usersNeoService.getSuggestedUsersByGenre(genreId, userId, limit);
+    }
+
+    async getSuggestedUsersByBand(bandId: number, userId: number, limit: number = 5): Promise<NeoUser[]> {
+        return await this.usersNeoService.getSuggestedUsersByBand(bandId, userId, limit);
+    }
 }

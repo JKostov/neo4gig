@@ -85,4 +85,16 @@ export class UsersController {
         const user = await this.usersService.createEvent(param.neoId, createEventNeoDto);
         return res.status(HttpStatus.OK).json(user);
     }
+
+    @Get('/:neoId/genre/:id/suggested')
+    public async getSuggestedUsersForGenre(@Response() res, @Param() param) {
+        const users = await this.usersService.getSuggestedUsersByGenre(param.id, param.neoId, 5);
+        return res.status(HttpStatus.OK).json(users);
+    }
+
+    @Get('/:neoId/band/:id/suggested')
+    public async getSuggestedUsersForBand(@Response() res, @Param() param) {
+        const users = await this.usersService.getSuggestedUsersByBand(param.id, param.neoId, 5);
+        return res.status(HttpStatus.OK).json(users);
+    }
 }

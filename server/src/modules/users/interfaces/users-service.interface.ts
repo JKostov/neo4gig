@@ -19,4 +19,6 @@ export interface IUsersService {
     updateInterest(ids: any): Promise<Genre | HttpException>;
     updateAttendance(ids: any): Promise<Event | HttpException>;
     createEvent(neoId: string, createEventNeoDto: CreateEventNeoDto): Promise<Event>;
+    getSuggestedUsersByGenre(genreId: number, userId: number, limit: number): Promise<NeoUser[]>;
+    getSuggestedUsersByBand(bandId: number, userId: number, limit: number): Promise<NeoUser[]>;
 }
