@@ -72,6 +72,12 @@ export class UsersController {
         return res.status(HttpStatus.OK).json(event);
     }
 
+    @Put('/:id/likes-change')
+    public async updateUserLikes(@Param() param, @Response() res, @Body() body) {
+        const band = await this.usersService.updateLikes(body);
+        return res.status(HttpStatus.OK).json(band);
+    }
+
     @Delete('/:id')
     public async deleteUser(@Param() param, @Response() res) {
 

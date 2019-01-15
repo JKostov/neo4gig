@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getGenres } from '../../thunks/genre';
+import { changeInterest, getGenres } from '../../thunks/genre';
 import GenreList from '../../components/GenreList';
 
 class Genres extends Component {
@@ -15,13 +15,15 @@ class Genres extends Component {
   }
 
   render() {
-    const { genres } = this.props;
+    const { genres, changeInterestAction, currentUser } = this.props;
 
-    if (!genres) {
-      return null;
-    }
-
-    return <GenreList genres={genres} />;
+    return (
+      <GenreList
+        currentUser={currentUser}
+        changeInterestAction={changeInterestAction}
+        genres={genres}
+      />
+    );
   }
 }
 
@@ -32,17 +34,21 @@ Genres.defaultProps = {
 Genres.propTypes = {
   getGenresAction: PropTypes.func.isRequired,
   genres: PropTypes.arrayOf(PropTypes.shape({})),
+  changeInterestAction: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = ({ genre }) => (
+const mapStateToProps = ({ auth, genre }) => (
   {
+    currentUser: auth.get('user').get('user'),
     genres: genre.get('genres'),
-  });
-
+  }
+);
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getGenresAction: getGenres,
+    changeInterestAction: changeInterest,
   },
   dispatch,
 );

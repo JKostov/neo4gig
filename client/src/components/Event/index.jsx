@@ -14,7 +14,7 @@ const Event = ({
     <div>City: {city}</div>
     <div>Date: {moment(dateAndTime).format('DD:MM:YYYY')}</div>
     <div>Time: {moment(dateAndTime).format('hh:mm')}</div>
-    {changeAttendanceAction && (
+    {currentUser && (
     <Button
       onClick={() => changeAttendanceAction(currentUser.get('id'), currentUser.get('neoId'), id)}
       content={
@@ -27,9 +27,14 @@ const Event = ({
   </div>
 );
 
+Event.defaultProps = {
+  changeAttendanceAction: () => {},
+  currentUser: null,
+};
+
 Event.propTypes = {
-  changeAttendanceAction: PropTypes.func.isRequired,
-  currentUser: PropTypes.shape({}).isRequired,
+  changeAttendanceAction: PropTypes.func,
+  currentUser: PropTypes.shape({}),
   event: PropTypes.shape({}).isRequired,
 };
 
