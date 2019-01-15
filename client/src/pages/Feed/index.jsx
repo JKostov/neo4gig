@@ -11,6 +11,7 @@ import EventList from '../../components/EventList';
 import { Segment, SubHeader } from '../../components/elements';
 import GenreList from '../../components/GenreList';
 import FollowModal from '../../components/FollowModal';
+import { getSuggestedPeople } from '../../thunks/genre';
 
 class Feed extends Component {
   constructor(props) {
@@ -39,9 +40,11 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed, changeFollowAction, createEventAction } = this.props;
+    const {
+      feed, changeFollowAction, createEventAction, getSuggestedPeopleAction, suggestedPeople,
+    } = this.props;
     const { modalTitle, modalUsers } = this.state;
-    if (!feed) {
+    if (!feed || !suggestedPeople) {
       return null;
     }
 
@@ -72,7 +75,13 @@ class Feed extends Component {
         </Segment>
         <Segment>
           <SubHeader header="Genres you're interested in" />
-          <GenreList genres={feed.genres} />
+          <GenreList
+            genres={feed.genres}
+            getSuggestedPeopleAction={getSuggestedPeopleAction}
+            changeFollowAction={changeFollowAction}
+            suggestedPeople={suggestedPeople}
+            currentUser={feed}
+          />
         </Segment>
         <Segment>
           <SubHeader header="Upcoming events in your city" />
@@ -84,6 +93,7 @@ class Feed extends Component {
 
 Feed.defaultProps = {
   feed: null,
+  suggestedPeople: [],
 };
 
 Feed.propTypes = {
@@ -92,12 +102,15 @@ Feed.propTypes = {
   getFeedAction: PropTypes.func.isRequired,
   changeFollowAction: PropTypes.func.isRequired,
   createEventAction: PropTypes.func.isRequired,
+  getSuggestedPeopleAction: PropTypes.func.isRequired,
+  suggestedPeople: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-const mapStateToProps = ({ auth, feed }) => (
+const mapStateToProps = ({ auth, feed, genre }) => (
   {
     user: auth.get('user').get('user'),
     feed: feed.get('feed'),
+    suggestedPeople: genre.get('suggestedPeople'),
   }
 );
 
@@ -106,6 +119,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(
     getFeedAction: getFeed,
     changeFollowAction: changeFollow,
     createEventAction: createEvent,
+    getSuggestedPeopleAction: getSuggestedPeople,
   },
   dispatch,
 );

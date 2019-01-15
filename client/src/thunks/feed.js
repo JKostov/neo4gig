@@ -27,7 +27,7 @@ export function changeAttendance(id, id1, id2) {
 
 export function changeFollow(id, id1, id2) {
   return dispatch => changeFollowApi(id, id1, id2)
-    .then(() => {
+    .then(({ data }) => {
       dispatch(getFeed(id));
     })
     .catch(e => console.log(e));

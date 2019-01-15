@@ -10,8 +10,8 @@ const User = ({ user: { id, name }, currentUser, changeFollowAction }) => (
     <Button
       onClick={() => changeFollowAction(currentUser.id, currentUser.neoId, id)}
       content={
-          currentUser.following &&
-          currentUser.following.filter(({ id: followId }) => followId === id).length > 0
+          currentUser.following
+          && currentUser.following.filter(({ id: followId }) => followId === id).length > 0
             ? 'Unfollow'
             : 'Follow'
         }
