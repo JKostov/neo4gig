@@ -13,9 +13,10 @@ export class UsersNeoRepository extends AbstractNeoRepository {
 
     async findSuggestedUsersByGenre(genreId: number, userId: number, limit: number = 5): Promise<User[]> {
         const { relationShipName } = Genre.associate(`${User.entityName}${RelationshipSide.ToMe}`);
+        const userRelation = User.associate(`${User.entityName}${RelationshipSide.FromMe}`);
         const records = await this.neo4jService.query(
-            `MATCH (g:${Genre.entityName})<-[r: ${relationShipName}]-(u:${User.entityName}) ` +
-            `WHERE id(g) = ${genreId} AND id(u) <> ${userId} ` +
+            `MATCH (g:${Genre.entityName})<-[r: ${relationShipName}]-(u:${User.entityName}), (m:${User.entityName}) ` +
+            `WHERE id(g) = ${genreId} AND id(u) <> ${userId} AND id(m) = ${userId} AND NOT (u)<-[:${userRelation.relationShipName}]-(m)`  +
             `RETURN u, rand() as r ` +
             `ORDER BY r ` +
             `LIMIT ${limit}`,
@@ -26,13 +27,20 @@ export class UsersNeoRepository extends AbstractNeoRepository {
 
     async findSuggestedUsersByBand(bandId: number, userId: number, limit: number = 5): Promise<User[]> {
         const { relationShipName } = Band.associate(`${User.entityName}${RelationshipSide.ToMe}`);
+        const userRelation = User.associate(`${User.entityName}${RelationshipSide.FromMe}`);
         const records = await this.neo4jService.query(
-            `MATCH (b:${Band.entityName})<-[r:${relationShipName}]-(u:${User.entityName}) ` +
-            `WHERE id(b) = ${bandId} AND id(u) <> ${userId} ` +
+            `MATCH (b:${Band.entityName})<-[r:${relationShipName}]-(u:${User.entityName}), (m:${User.entityName}) ` +
+            `WHERE id(b) = ${bandId} AND id(u) <> ${userId} AND id(m) = ${userId} AND NOT (u)<-[:${userRelation.relationShipName}]-(m) ` +
             `RETURN u, rand() as r ` +
             `ORDER BY r ` +
             `LIMIT ${limit}`,
         );
+
+        console.log(`MATCH (b:${Band.entityName})<-[r:${relationShipName}]-(u:${User.entityName}), (u)-[rr:${userRelation.relationShipName}]->(m:${User.entityName}) ` +
+            `WHERE id(b) = ${bandId} AND id(u) <> ${userId} AND id(m) = ${userId} AND rr IS NULL ` +
+            `RETURN u, rand() as r ` +
+            `ORDER BY r ` +
+            `LIMIT ${limit}`);
 
         return super.createObjectsFromRecord(records);
     }
