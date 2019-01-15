@@ -28,9 +28,11 @@ export interface IUsersNeoService {
     checkForFollowRelationship(id1: number, id2: number): Promise<boolean>;
     checkForAttendanceRelationship(id1: number, id2: number): Promise<boolean>;
     checkForInterestsRelationship(id1: number, id2: number): Promise<boolean>;
+    checkForLikesRelationship(id1: number, id2: number): Promise<boolean>;
     findUserWithLikedBands(user: User): Promise<User>;
     findUserWithHisBand(user: User): Promise<User>;
     likeBand(currentUser: User, bandToLike: Band): Promise<Band>;
+    unlikeBand(currentUser: User, bandToUnlike: Band): Promise<Band>;
     getSuggestedUsersByGenre(genreId: number, userId: number, limit: number): Promise<User[]>;
     getSuggestedUsersByBand(bandId: number, userId: number, limit: number): Promise<User[]>;
 }

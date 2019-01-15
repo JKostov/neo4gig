@@ -15,6 +15,8 @@ import { IUsersNeoService } from './interfaces/users-service.neo.interface';
 import { IGenresNeoService } from '../genres/interfaces/genres-service.neo.interface';
 import { Genre } from '../genres/entity/genre.neo.entity';
 import { CreateEventNeoDto } from '../events/dto/createEvent.neo.dto';
+import {Band} from '../bands/entity/band.neo.entity';
+import {IBandsNeoService} from '../bands/interfaces/bands-service.neo.interface';
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -27,6 +29,8 @@ export class UsersService implements IUsersService {
         private readonly eventsNeoService: IEventsNeoService,
         @Inject('GenresNeoService')
         private readonly genresNeoService: IGenresNeoService,
+        @Inject('BandsNeoService')
+        private readonly bandsNeoService: IBandsNeoService,
     ) {}
 
     async findAll(): Promise<User[]> {
@@ -97,6 +101,21 @@ export class UsersService implements IUsersService {
         return await this.usersNeoService.checkForAttendanceRelationship(id1, id2)
             ? await this.usersNeoService.unattendEvent(user1, event)
             : await this.usersNeoService.attendEvent(user1, event);
+    }
+
+    async updateLikes(ids: any): Promise<Band | HttpException> {
+        if (!ids.id1 || !ids.id2) {
+            return new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
+        }
+
+        const { id1, id2 } = ids;
+
+        const user = await this.usersNeoService.findById(id1.toString());
+        const band = await this.bandsNeoService.findById(id2.toString());
+
+        return await this.usersNeoService.checkForLikesRelationship(id1, id2)
+            ? await this.usersNeoService.unlikeBand(user, band)
+            : await this.usersNeoService.likeBand(user, band);
     }
 
     async create(createUserDto: CreateUserDto): Promise<User> {

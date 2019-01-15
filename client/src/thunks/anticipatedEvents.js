@@ -13,7 +13,7 @@ export function getAnticipatedEvents() {
 export function changeAttendance(id, id1, id2) {
   return dispatch => changeAttendanceApi(id, id1, id2)
     .then(() => {
-      dispatch(getAnticipatedEvents(id));
+      dispatch(getAnticipatedEvents());
     })
     .catch(e => console.log(e));
 }

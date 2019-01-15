@@ -17,11 +17,13 @@ const EventList = ({ events, changeAttendanceAction, currentUser }) => (
 
 EventList.defaultProps = {
   events: [],
+  changeAttendanceAction: () => {},
+  currentUser: null,
 };
 
 EventList.propTypes = {
-  changeAttendanceAction: PropTypes.func.isRequired,
-  currentUser: PropTypes.shape({}).isRequired,
+  changeAttendanceAction: PropTypes.func,
+  currentUser: PropTypes.shape({}),
   events: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
 };
 

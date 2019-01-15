@@ -144,6 +144,10 @@ export class UsersNeoService implements IUsersNeoService {
         return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'Genre');
     }
 
+    async checkForLikesRelationship(id1: number, id2: number): Promise<boolean> {
+        return await this.usersNeoRepository.checkForRelationShip(id1, id2, 'Band');
+    }
+
     async findUserWithLikedBands(user: User): Promise<User> {
         const { id } = user;
         return await this.usersNeoRepository.getRelationship(id, Band.entityName, RelationshipSide.FromMe);
@@ -159,6 +163,13 @@ export class UsersNeoService implements IUsersNeoService {
         const bandToLikeId = bandToLike.id;
 
         return await this.usersNeoRepository.createRelationship(currentUserId, bandToLikeId, Band.entityName);
+    }
+
+    async unlikeBand(currentUser: User, bandToUnlike: Band): Promise<Band> {
+        const currentUserId = currentUser.id;
+        const bandToUnlikeId = bandToUnlike.id;
+
+        return await this.usersNeoRepository.deleteRelationship(currentUserId, bandToUnlikeId, Band.entityName);
     }
 
     async getSuggestedUsersByGenre(genreId: number, userId: number, limit: number = 5): Promise<User[]> {

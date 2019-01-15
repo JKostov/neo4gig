@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getBands } from '../../thunks/band';
+import { changeLikes, getBands } from '../../thunks/band';
 import BandList from '../../components/BandList';
 
 class Bands extends Component {
@@ -15,13 +15,15 @@ class Bands extends Component {
   }
 
   render() {
-    const { bands } = this.props;
+    const { bands, changeLikesAction, currentUser } = this.props;
 
-    if (!bands) {
-      return null;
-    }
-
-    return <BandList bands={bands} />;
+    return (
+      <BandList
+        currentUser={currentUser}
+        changeLikesAction={changeLikesAction}
+        bands={bands}
+      />
+    );
   }
 }
 
@@ -32,17 +34,21 @@ Bands.defaultProps = {
 Bands.propTypes = {
   getBandsAction: PropTypes.func.isRequired,
   bands: PropTypes.arrayOf(PropTypes.shape({})),
+  changeLikesAction: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = ({ band }) => (
+const mapStateToProps = ({ auth, band }) => (
   {
+    currentUser: auth.get('user').get('user'),
     bands: band.get('bands'),
-  });
-
+  }
+);
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getBandsAction: getBands,
+    changeLikesAction: changeLikes,
   },
   dispatch,
 );
