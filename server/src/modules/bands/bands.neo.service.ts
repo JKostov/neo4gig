@@ -3,8 +3,6 @@ import { CreateBandNeoDto } from './dto/createBand.neo.dto';
 import { Band } from './entity/band.neo.entity';
 import { IBandsNeoService } from './interfaces/bands-service.neo.interface';
 import { User } from '../users/entity/user.neo.entity';
-import { RelationshipSide } from '../../common/enum/neo-relationship-side.enum';
-import { QueryWith } from '../../common/entity/neo-query-with';
 
 @Injectable()
 export class BandsNeoService implements IBandsNeoService {
@@ -17,9 +15,7 @@ export class BandsNeoService implements IBandsNeoService {
     }
 
     async findAllWithUsers(): Promise<Band[]> {
-        return await this.bandsNeoRepository.findWith(null, [
-            new QueryWith(User.entityName, RelationshipSide.ToMe),
-        ]);
+        return await this.bandsNeoRepository.findAllWithUsers();
     }
 
     async findById(id: string): Promise<Band> {
@@ -48,13 +44,5 @@ export class BandsNeoService implements IBandsNeoService {
         const userToAddId = userToAdd.id;
 
         return await this.bandsNeoRepository.createRelationship(bandId, userToAddId, User.entityName);
-    }
-
-    static associate(entityName): object {
-        if (Band.relationships === null) {
-            return null;
-        }
-
-        return Band.relationships[entityName];
     }
 }
