@@ -6,7 +6,7 @@ import style from './style.scss';
 
 const GenreList = ({ genres }) => (
   <div className={style.grid}>
-    {genres.map(genre => <Genre key={genre.id} genre={genre} />)}
+    {genres.map(genre => <Genre genre={genre} />)}
   </div>);
 
 GenreList.defaultProps = {

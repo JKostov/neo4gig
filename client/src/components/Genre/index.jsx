@@ -7,13 +7,15 @@ const Genre = ({
   genre: {
     id, name, description,
   },
-}) => (
-  <div className={style.card} key={id}>
-    <div><strong>{name}</strong></div>
-    <div>Description:</div>
-    <div>{description}</div>
-  </div>
-);
+}) => {
+  return (
+    <div className={style.card} key={id}>
+      <div><strong>{name}</strong></div>
+      <div>Description:</div>
+      <div>{description}</div>
+    </div>
+  );
+};
 
 Genre.propTypes = {
   genre: PropTypes.shape({}).isRequired,
