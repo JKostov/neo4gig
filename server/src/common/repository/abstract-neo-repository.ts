@@ -1,7 +1,6 @@
 import { Neo4jService } from '../../modules/neo4j/neo4j.service';
 import { RelationshipSide } from '../enum/neo-relationship-side.enum';
 import * as stringifyObject from 'stringify-object';
-import { QueryWith } from '../entity/neo-query-with';
 import { User } from '../../modules/users/entity/user.neo.entity';
 
 export abstract class AbstractNeoRepository {
@@ -21,28 +20,6 @@ export abstract class AbstractNeoRepository {
         return this.createObjectFromRecord(records);
     }
 
-    public async findByIdWith(id: number, withArray: QueryWith[]): Promise<object> {
-        const instance = await this.findById(id);
-        if (instance === null) {
-            return null;
-        }
-
-        for (const relationship of withArray) {
-            const { className, side } = relationship;
-            const relship = this.classEntity.associate(`${className}${side}`);
-            const { relationShipName, property } = relship;
-
-            const result = await this.neo4jService.query(
-                `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
-                `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(m:${className})` +
-                ` WHERE id(n) = ${id} RETURN m`);
-
-            instance[property] = this.createObjectsFromRecord(result, relship.className);
-        }
-
-        return instance;
-    }
-
     public async findOne(query: object): Promise<object> {
         const queryString = this.createStringFromObject(query);
         const records = await this.neo4jService.query(`MATCH (n:${this.className} ${queryString}) RETURN n LIMIT 1`);
@@ -50,27 +27,27 @@ export abstract class AbstractNeoRepository {
         return this.createObjectFromRecord(records);
     }
 
-    public async findOneWith(query: object, withArray: QueryWith[]): Promise<object> {
-        const instance = await this.findOne(query);
-        if (instance === null) {
-            return null;
-        }
-
-        for (const relationship of withArray) {
-            const { className, side } = relationship;
-            const relship = this.classEntity.associate(`${className}${side}`);
-            const { relationShipName, property } = relship;
-
-            const result = await this.neo4jService.query(
-                `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
-                `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(m:${className})` +
-                ` WHERE id(n) = ${instance['id']} RETURN m`);
-
-            instance[property] = this.createObjectsFromRecord(result, relship.className);
-        }
-
-        return instance;
-    }
+    // public async findOneWith(query: object, withArray: QueryWith[]): Promise<object> {
+    //     const instance = await this.findOne(query);
+    //     if (instance === null) {
+    //         return null;
+    //     }
+    //
+    //     for (const relationship of withArray) {
+    //         const { className, side } = relationship;
+    //         const relship = this.classEntity.associate(`${className}${side}`);
+    //         const { relationShipName, property } = relship;
+    //
+    //         const result = await this.neo4jService.query(
+    //             `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
+    //             `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}(m:${className})` +
+    //             ` WHERE id(n) = ${instance['id']} RETURN m`);
+    //
+    //         instance[property] = this.createObjectsFromRecord(result, relship.className);
+    //     }
+    //
+    //     return instance;
+    // }
 
     public async find(query: object, skip: number = 0, limit: number = null): Promise<object[]> {
         const queryString = this.createStringFromObject(query);
@@ -109,7 +86,7 @@ export abstract class AbstractNeoRepository {
     public async findWithOperator(query: object, skip: number = 0, limit: number = null): Promise<object> {
         const queryString = this.convertQueryToQueryString(query);
         const records = await this.neo4jService.query(
-            `MATCH (n:${this.className}) WHERE ${queryString} RETURN n SKIP ${skip} ${limit ? 'LIMIT ' + limit : ''}`
+            `MATCH (n:${this.className}) WHERE ${queryString} RETURN n SKIP ${skip} ${limit ? 'LIMIT ' + limit : ''}`,
         );
 
         return this.createObjectsFromRecord(records);
@@ -135,7 +112,7 @@ export abstract class AbstractNeoRepository {
         const { relationShipName } = relationship;
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className}),(m:${entity2name}) ` +
-             `WHERE id(n) = ${id1} AND id(m) = ${id2} CREATE (n)-[r:${relationShipName}]->(m) RETURN m LIMIT 1`,
+             `WHERE id(n) = ${id1} AND id(m) = ${id2} MERGE (n)-[r:${relationShipName}]->(m) RETURN m LIMIT 1`,
         );
 
         return this.createObjectFromRecord(result, relationship.className);
@@ -147,7 +124,7 @@ export abstract class AbstractNeoRepository {
         const queryString = this.createStringFromObject(query2);
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className}),(m:${entity2name} ${queryString})` +
-            `WHERE id(n) = ${id1} CREATE (n)-[r:${relationShipName}]->(m) RETURN m`,
+            `WHERE id(n) = ${id1} MERGE (n)-[r:${relationShipName}]->(m) RETURN m`,
         );
 
         return this.createObjectsFromRecord(result, relationship.className);
@@ -179,7 +156,7 @@ export abstract class AbstractNeoRepository {
     }
 
     public async checkForRelationShip(id1: number, id2: number, entity2name: string): Promise<boolean> {
-        const { relationShipName, property } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
+        const { relationShipName } = this.classEntity.associate(`${entity2name}${RelationshipSide.FromMe}`);
         const result = await this.neo4jService.query(
             `MATCH (n:${this.className})-` +
             `[r:${relationShipName}]->(m:${entity2name})` +

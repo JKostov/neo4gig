@@ -23,7 +23,6 @@ export interface IUsersNeoService {
     findUserWithFollowers(user: User): Promise<User>;
     findUserWithFollowingGenres(user: User): Promise<User>;
     findUserWithAttendingFutureEvents(user: User): Promise<User>;
-    findUserWithFollowersAndFollowing(id: number): Promise<User>;
     findUserWithFollowersFollowingAndGenres(query: object): Promise<User>;
     checkForFollowRelationship(id1: number, id2: number): Promise<boolean>;
     checkForAttendanceRelationship(id1: number, id2: number): Promise<boolean>;

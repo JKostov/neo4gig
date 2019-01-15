@@ -116,20 +116,8 @@ export class UsersNeoService implements IUsersNeoService {
         );
     }
 
-    async findUserWithFollowersAndFollowing(id: number): Promise<User> {
-        return await this.usersNeoRepository.findByIdWith(id, [
-            new QueryWith(User.entityName, RelationshipSide.FromMe),
-            new QueryWith(User.entityName, RelationshipSide.ToMe),
-        ]);
-    }
-
     async findUserWithFollowersFollowingAndGenres(query: object): Promise<User> {
-        return await this.usersNeoRepository.findOneWith(query, [
-            new QueryWith(User.entityName, RelationshipSide.FromMe),
-            new QueryWith(User.entityName, RelationshipSide.ToMe),
-            new QueryWith(Genre.entityName, RelationshipSide.FromMe),
-            new QueryWith(Event.entityName, RelationshipSide.FromMe),
-        ]);
+        return await this.usersNeoRepository.findWithFollowersFollowingGenresAndEvents(query);
     }
 
     async checkForFollowRelationship(id1: number, id2: number): Promise<boolean> {
