@@ -14,6 +14,7 @@ import { IEventsNeoService } from '../events/interfaces/events-service.neo.inter
 import { IUsersNeoService } from './interfaces/users-service.neo.interface';
 import { IGenresNeoService } from '../genres/interfaces/genres-service.neo.interface';
 import { Genre } from '../genres/entity/genre.neo.entity';
+import { CreateEventNeoDto } from '../events/dto/createEvent.neo.dto';
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -150,5 +151,11 @@ export class UsersService implements IUsersService {
             createNeoUserDto,
             createUserPgDto,
         };
+    }
+
+    async createEvent(neoId: string, createEventNeoDto: CreateEventNeoDto): Promise<Event> {
+        const user = await this.usersNeoService.findById(neoId);
+        const event = await this.eventsNeoService.create(createEventNeoDto);
+        return await this.usersNeoService.attendEvent(user, event);
     }
 }

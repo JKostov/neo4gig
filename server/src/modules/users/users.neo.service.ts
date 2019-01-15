@@ -7,7 +7,7 @@ import {Event} from '../events/entity/event.neo.entity';
 import {RelationshipSide} from '../../common/enum/neo-relationship-side.enum';
 import {QueryWith} from '../../common/entity/neo-query-with';
 import * as moment from 'moment';
-import { Band } from '../bands/entity/band.neo.entity';
+import {Band} from '../bands/entity/band.neo.entity';
 
 @Injectable()
 export class UsersNeoService implements IUsersNeoService {
@@ -128,6 +128,7 @@ export class UsersNeoService implements IUsersNeoService {
             new QueryWith(User.entityName, RelationshipSide.FromMe),
             new QueryWith(User.entityName, RelationshipSide.ToMe),
             new QueryWith(Genre.entityName, RelationshipSide.FromMe),
+            new QueryWith(Event.entityName, RelationshipSide.FromMe),
         ]);
     }
 

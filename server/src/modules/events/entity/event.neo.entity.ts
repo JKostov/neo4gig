@@ -24,16 +24,16 @@ export class Event extends AbstractNeoEntity {
         super();
         this.id = event && event.id || null;
         this.city = event && event.city || null;
-        this.dateAndTime = event && new Date(event.dateAndTime) || null;
-        this.users = event && event.users || [];
-        this.genres = event && event.genres || [];
+        this.dateAndTime = event && event.dateAndTime || null;
+        this.users = event && event.users || null;
+        this.genres = event && event.genres || null;
     }
 
     id: number;
 
     city: string;
 
-    dateAndTime: Date;
+    dateAndTime: string;
 
     users: User[];
 

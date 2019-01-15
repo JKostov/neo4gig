@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { IUsersService } from './interfaces/users-service.interface';
 import { CreateUserDto } from './dto/createUser.dto';
+import { CreateEventNeoDto } from '../events/dto/createEvent.neo.dto';
 
 @Controller('users')
 export class UsersController {
@@ -75,6 +76,13 @@ export class UsersController {
     public async deleteUser(@Param() param, @Response() res) {
 
         const user = await this.usersService.delete(param.id);
+        return res.status(HttpStatus.OK).json(user);
+    }
+
+    @Post('/:id/events')
+    @UsePipes(new ValidationPipe())
+    public async createEvent(@Param() param, @Response() res, @Body() createEventNeoDto: CreateEventNeoDto) {
+        const user = await this.usersService.createEvent(param.neoId, createEventNeoDto);
         return res.status(HttpStatus.OK).json(user);
     }
 }

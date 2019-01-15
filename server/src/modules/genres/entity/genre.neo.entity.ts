@@ -24,8 +24,8 @@ export class Genre extends AbstractNeoEntity {
         this.id = genre && genre.id || null;
         this.name = genre && genre.name || null;
         this.description = genre && genre.description || null;
-        this.userFollowers = genre && genre.userFollowers || [];
-        this.events = genre && genre.events || [];
+        this.userFollowers = genre && genre.userFollowers || null;
+        this.events = genre && genre.events || null;
     }
 
     id: number;

@@ -23,8 +23,8 @@ export class Band extends AbstractNeoEntity {
         this.id = band && band.id || null;
         this.name = band && band.name || null;
         this.description = band && band.description || null;
-        this.members = band && band.members || [];
-        this.likes = band && band.likes || [];
+        this.members = band && band.members || null;
+        this.likes = band && band.likes || null;
     }
 
     id: number;
