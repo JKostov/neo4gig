@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getAnticipatedEvents } from '../../thunks/anticipatedEvents';
+import {changeAttendance, getAnticipatedEvents} from '../../thunks/anticipatedEvents';
 import EventList from '../../components/EventList';
 
 class AnticipatedEvents extends Component {
@@ -15,12 +15,18 @@ class AnticipatedEvents extends Component {
   }
 
   render() {
-    const { anticipatedEvents } = this.props;
+    const { anticipatedEvents, changeAttendanceAction, currentUser } = this.props;
 
     if (!anticipatedEvents.length) {
       return null;
     }
-    return <EventList events={anticipatedEvents} />;
+    return (
+      <EventList
+        currentUser={currentUser}
+        changeAttendanceAction={changeAttendanceAction}
+        events={anticipatedEvents}
+      />
+    );
   }
 }
 
@@ -31,10 +37,13 @@ AnticipatedEvents.defaultProps = {
 AnticipatedEvents.propTypes = {
   getAnticipatedEventsAction: PropTypes.func.isRequired,
   anticipatedEvents: PropTypes.arrayOf(PropTypes.shape({})),
+  changeAttendanceAction: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = ({ anticipatedEvents }) => (
+const mapStateToProps = ({ auth, anticipatedEvents }) => (
   {
+    currentUser: auth.get('user').get('user'),
     anticipatedEvents: anticipatedEvents.get('anticipatedEvents'),
   }
 );
@@ -42,6 +51,7 @@ const mapStateToProps = ({ anticipatedEvents }) => (
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getAnticipatedEventsAction: getAnticipatedEvents,
+    changeAttendanceAction: changeAttendance,
   },
   dispatch,
 );
