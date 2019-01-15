@@ -58,6 +58,10 @@ class Header extends Component {
           onClick={() => this.itemChangeCallback('/genres')}
         />
         <MenuItem
+          name="bands"
+          onClick={() => this.itemChangeCallback('/bands')}
+        />
+        <MenuItem
           name="feed"
           onClick={() => this.itemChangeCallback('/feed')}
         />

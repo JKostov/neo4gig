@@ -47,8 +47,8 @@ export class GenresNeoService implements IGenresNeoService {
         );
     }
 
-    async findEventWithAttendingUsers(event: Event): Promise<Event> {
-        const { id } = event;
+    async findGenreWithInterestedUsers(genre: Genre): Promise<Genre> {
+        const { id } = genre;
         return await this.genresNeoRepository.getRelationship(id, User.entityName, RelationshipSide.ToMe);
     }
 

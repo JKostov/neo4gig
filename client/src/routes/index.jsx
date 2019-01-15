@@ -6,8 +6,6 @@ import { Loader } from 'semantic-ui-react';
 import Loadable from 'react-loadable';
 import AppLayout from '../components/AppLayout';
 import MostAnticipated from '../pages/AnticipatedEvents';
-import Genres from '../pages/Genres';
-import Feed from '../pages/Feed';
 
 const dynamicImport = loader =>
   Loadable({
@@ -22,6 +20,7 @@ const LoggedInList = ({ isAdmin }) => (
     <Route exact path="/" component={MostAnticipated} />
     <Route exact path="/genres" component={dynamicImport(() => import('../pages/Genres'))} />
     <Route exact path="/feed" component={dynamicImport(() => import('../pages/Feed'))} />
+    <Route exact path="/bands" component={dynamicImport(() => import('../pages/Bands'))} />
     <Route path="/logout" component={dynamicImport(() => import('../components/Logout'))} />
     {isAdmin && <AdminRoutes />}
     <Redirect to="/" />

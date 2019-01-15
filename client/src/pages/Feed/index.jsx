@@ -40,7 +40,6 @@ class Feed extends Component {
 
   render() {
     const { feed, changeFollowAction } = this.props;
-    console.log(feed);
     const { modalTitle, modalUsers } = this.state;
     if (!feed) {
       return null;
@@ -63,13 +62,12 @@ class Feed extends Component {
             content={`Following: ${feed.following.length}`}
             onClick={() => this.openModal(feed.following, 'Following')}
           />
-
-          <Button
-            basic
-            content="add/remove user-205"
-            onClick={() => changeFollowAction(feed.id, feed.neoId, 205)}
+          <FollowModal
+            changeFollowAction={changeFollowAction}
+            ref={this.modalRef}
+            title={modalTitle}
+            users={modalUsers}
           />
-          <FollowModal ref={this.modalRef} title={modalTitle} users={modalUsers} />
         </Segment>
         <Segment>
           <SubHeader header="Genres you're interested in" />
@@ -91,6 +89,7 @@ Feed.propTypes = {
   feed: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   getFeedAction: PropTypes.func.isRequired,
+  changeFollowAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ auth, feed }) => (
