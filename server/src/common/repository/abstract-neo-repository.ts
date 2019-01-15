@@ -2,6 +2,7 @@ import { Neo4jService } from '../../modules/neo4j/neo4j.service';
 import { RelationshipSide } from '../enum/neo-relationship-side.enum';
 import * as stringifyObject from 'stringify-object';
 import { QueryWith } from '../entity/neo-query-with';
+import { User } from '../../modules/users/entity/user.neo.entity';
 
 export abstract class AbstractNeoRepository {
     protected readonly className: string;
@@ -80,28 +81,29 @@ export abstract class AbstractNeoRepository {
         return this.createObjectsFromRecord(records);
     }
 
-    public async findWith(query: object, withArray: QueryWith[], skip: number = 0, limit: number = null): Promise<object[]> {
-        const objects = await this.find(query, skip, limit);
-        if (objects.length === null) {
-            return null;
-        }
+    public async findAllWithUsers(): Promise<object[]> {
+        const relship = this.classEntity.associate(`${User.entityName}${RelationshipSide.ToMe}`);
+        const { relationShipName, property } = relship;
 
-        for (const o of objects) {
-            for (const relationship of withArray) {
-                const { className, side } = relationship;
-                const relship = this.classEntity.associate(`${className}${side}`);
-                const { relationShipName, property } = relship;
+        const result = await this.neo4jService.query(
+            `MATCH (n:${this.className}) OPTIONAL MATCH (n)${RelationshipSide.ToMe}` +
+            `[r:${relationShipName}]${RelationshipSide.Neutral}(m:${User.entityName}) RETURN n, m`,
+        );
 
-                const result = await this.neo4jService.query(
-                    `MATCH (n:${this.className})${side === RelationshipSide.ToMe ? RelationshipSide.ToMe : RelationshipSide.Neutral}` +
-                    `[r:${relationShipName}]${side === RelationshipSide.FromMe ? RelationshipSide.FromMe : RelationshipSide.Neutral}` +
-                    ` (m:${className}) WHERE id(n) = ${o['id']} RETURN m`);
-
-                o[property] = this.createObjectsFromRecord(result, relship.className);
+        const objects = {};
+        for (const record of result) {
+            const obj = this.createObjectFromData(record.get('n'));
+            const user = this.createObjectFromData(record.get('m'), User);
+            if (objects[obj['id']] === undefined) {
+                objects[obj['id']] = obj;
+                objects[obj['id']][property] = [];
+            }
+            if (user !== null) {
+                objects[obj['id']][property].push(user);
             }
         }
 
-        return objects;
+        return this.convertObjectToArray(objects);
     }
 
     public async findWithOperator(query: object, skip: number = 0, limit: number = null): Promise<object> {
@@ -282,6 +284,25 @@ export abstract class AbstractNeoRepository {
         const id = parseInt(record.get(0).identity, 10);
         const props = record.get(0).properties;
         return new classConstructor({ ...props, id });
+    }
+
+    protected createObjectFromData(data, className = null): object {
+        if (data === undefined || data === null) {
+            return null;
+        }
+
+        let classConstructor = this.classEntity;
+        if (className) {
+            classConstructor = className;
+        }
+
+        const id = parseInt(data.identity, 10);
+        const props = data.properties;
+        return new classConstructor({ id, ...props });
+    }
+
+    protected convertObjectToArray(obj: object): any[] {
+        return Object.keys(obj).map((key) => (Array.isArray(obj[key]) && obj[key].length === 0) ? null : obj[key]);
     }
 
     protected createStringFromObject(query: object): string {
