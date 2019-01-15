@@ -81,6 +81,7 @@ class Feed extends Component {
             changeFollowAction={changeFollowAction}
             suggestedPeople={suggestedPeople}
             currentUser={feed}
+            isFeed
           />
         </Segment>
         <Segment>

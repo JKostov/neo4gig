@@ -6,7 +6,7 @@ import style from './style.scss';
 
 const GenreList = ({
   genres, changeInterestAction, currentUser, suggestedPeople,
-  getSuggestedPeopleAction, changeFollowAction,
+  getSuggestedPeopleAction, changeFollowAction, isFeed,
 }) => (
   <div className={style.grid}>
     {genres.map(genre => (
@@ -18,6 +18,7 @@ const GenreList = ({
         changeInterestAction={changeInterestAction}
         key={genre.id}
         genre={genre}
+        isFeed={isFeed}
       />))}
   </div>);
 
@@ -25,6 +26,7 @@ GenreList.defaultProps = {
   genres: [],
   changeInterestAction: () => {},
   currentUser: null,
+  isFeed: false,
 };
 
 GenreList.propTypes = {
@@ -34,6 +36,7 @@ GenreList.propTypes = {
   currentUser: PropTypes.shape({}),
   genres: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
   suggestedPeople: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  isFeed: PropTypes.bool,
 };
 
 export default GenreList;

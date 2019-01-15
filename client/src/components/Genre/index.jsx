@@ -22,13 +22,14 @@ class Genre extends Component {
     const {
       genre: {
         id, name, description, userFollowers,
-      }, currentUser, changeInterestAction, changeFollowAction, suggestedPeople,
+      }, currentUser, changeInterestAction, changeFollowAction, suggestedPeople, isFeed,
     } = this.props;
+
     return (
       <div className={style.card} key={id}>
         <div>Name: {name}</div>
         <div>Description: {description}</div>
-        {currentUser && (
+        { !isFeed && (
           <Button
             onClick={() => changeInterestAction(currentUser.id, currentUser.neoId, id)}
             content={
@@ -37,8 +38,8 @@ class Genre extends Component {
                 ? 'Dislike'
                 : 'Like'
             }
-          />
-        )}
+          />)
+        }
         <Button content="Get suggested" onClick={this.openModal} />
         <FollowModal
           currentUser={currentUser}
@@ -55,6 +56,7 @@ class Genre extends Component {
 Genre.defaultProps = {
   changeInterestAction: () => {},
   currentUser: null,
+  isFeed: false,
 };
 
 Genre.propTypes = {
@@ -64,6 +66,7 @@ Genre.propTypes = {
   changeInterestAction: PropTypes.func,
   currentUser: PropTypes.shape({}),
   genre: PropTypes.shape({}).isRequired,
+  isFeed: PropTypes.bool,
 };
 
 export default Genre;
